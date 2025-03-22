@@ -1,3 +1,7 @@
 /its1/__pycache__
 *.exe
 .vscode
+/docs/auxil/
+/.idea/
+/out/
+/docs/einsendeaufgaben/einsendeaufgaben 1/Einsendeaufgaben ITS 1.ind
