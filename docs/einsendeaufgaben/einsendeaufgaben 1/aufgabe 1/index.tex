@@ -1,0 +1,45 @@
+\chapter{Aufgabe 1: Klassische Schutzziele}
+
+\section{a)}
+
+\textit{Erklären Sie die Begriffe ``Vertraulichkeit``, ``Integrität``, ``Verfügbarkeit`` und
+``Authentizität`` und führen Sie jeweils mindestens zwei (kryptographische) Mechanismen an, die die jeweilige Sicherheitsanforderung adressieren.}\\
+
+\noindent
+Im Folgenden werden die Begriffe kurz wiedergegeben, wobei darauf hingewiesen sei, dass die 4 Begriffe in der Fachliteratur unter dem Kürzel \textit{CIA+} (\textit{Confidentiality}, \textit{Integrity}, \textit{Availability}, \textit{Authenticity}) zusammengefasst werden (vgl.~\cite[9]{Eck18} sowie ~\cite[23 f.]{HKRS+14}). Zu weiteren Sicherheitszielen, die auch teilweise aus den genannten 4 Schutzzielen abgeleitet werden können, siehe auch~\cite[31]{BSIBasis}
+
+\subsection*{Vertraulichkeit}
+Im Kontext IT-Sicherheit beschreibt \textbf{Vertraulichkeit} ein Sicherheitsziel, bei dem es um den vertraulichen Austausch von Nachrichten/Informationen (im Folgenden einfach \textit{Daten}) zwischen zwei oder mehreren Benutzern geht, wobei als Benutzer nicht nur Personen verstanden werden können, sondern durchaus auch technische Systeme, wie bspw. Computer.\\
+Ist Vertraulichkeit bei dem Austausch von Daten garantiert, können teilnehmende Benutzer davon ausgehen, dass kein weiterer Benutzer, der nicht als Empfänger für die Daten gilt, Kenntnisse über die Daten bzw. deren Inhalt erlangt hat (``keine unautorisierte Informationsgewinnung``,~\cite[10]{Eck18}).\\
+
+\noindent
+Mechanismen, die das Sicherheitsziel \textit{Vertraulichkeit} adressieren, sind bspw. \textbf{symmetrische} oder - besser noch - \textbf{asymmetrische Verschlüsselung} der Daten\footnote{
+Findet die Übertragung nicht auf elektronischem Wege statt, können \textbf{bauliche Maßnahmen} (wie bspw. abhörsichere Räume) Vertraulichkeit garantieren.
+}
+
+\subsection*{Integrität (Integrity)}
+Unter \textbf{Integrität} versteht man das Sicherheitsziel der Unversehrtheit und Originalität der Daten.
+Wird das Sicherheitsziel erfüllt, können an dem Datenaustausch beteiligte Benutzer davon ausgehen, dass die Daten auf dem Übertragungsweg nicht geändert worden sind, und falls ja, dass diese Änderung, die ja durchaus auch technischer Natur sein kann (Signalstörungen/-verlust bei der Übertragung) entdeckt wird, so dass Daten neu angefragt werden können.
+
+\noindent
+Mechanismen, die das Schutzziel \textit{Integrität} unterstützen, sind bspw. \textpt{Prüfsummen}, die aus den zu übertragenen Daten berechnet werden, und die der Empfänger mit der erhaltenen Nachricht vergleichen kann.
+Integrität kann bspw. auch durch digitale Signaturen erreicht werden, wodurch auch gleichzeitig \textbf{Authentizität} sichergestellt werden kann.
+
+\subsection*{Authentizität (Authenticity)}
+Unter \textbf{Authentizität} versteht man, dass eine Nachricht nicht abgeändert worden ist (bspw. durch den Empfänger), und die Daten somit eindeutig einem Benutzer zugeordnet werden können. Hierdurch soll auch die \textit{Nichtabstreitbarkeit} der übermittelten Daten garantiert werden.
+
+\noindent
+Mechanismen, die das Sicherheit ziel ``Authentizität`` unterstützen, sind digitale Signaturen, oder auch \textit{MAC} (\textit{Message Authentication Code}), also schlüsselabhängige Hashverfahren (vgl.~\cite{Sch15})\footnote{
+In einem weiteren Rahmen kann man das 4-Augen-Gespräch, ggf. auch unter zuhilfenahme von Video-Kommunikation, als unterstützenden Mechanismus verstehen.}
+
+\subsection*{Verfügbarkeit (Availability)}
+Das Sicherheitsziel \textbf{Verfügbarkeit} beschreibt die (möglichst) ununterbrochene Verfügbarkeit von Daten, was bspw. im Bereich \textit{Kritischer Infrastruktur} bzw. bei Behörden und Unternehmen großen öffentlichen Interesses eine wichtige Rolle spielt.\\
+Hierbei müssen mitunter wirtschaftlich relevante Daten oder personenbezogene Daten (bspw. Gesundheitsdaten) stets zur Verfügung stehen, um enstprechend wirtschaftlichen oder gesundheitlichen Schaden abzuwenden.\footnote{
+Den bereits in einer vorhergehenden Fußnote erwähnten \textbf{baulichen Maßnahmen} kommen in Verbindung mit Schutzkonzepten zur Erreichung des Sicherheitsziels ``Verfügbarkeit`` eine weitaus wichtigere Rolle zu, da auch \textit{höherer Gewalt} (Brände, Erdbeben, Überflutungen \ldots) aber auch Einbruch und Diebstahl (physischer Datenträger) Rechnung getragen werden muss.
+}
+
+\noindent
+``Verfügbarkeit`` wird i.d.R. durch Sicherungskonzepte, Redundanz (sowohl hinsichtlich technischer Infrastruktur als auch Datenhaltung) sowie geeigneter Notfallvorsorge (Datensicherung/-backups) sichergestellt.
+\textit{Schartner et al.} weisen in~\cite{HKRS+14}[\textbf{Tab. 3.1}, 24] außerdem noch auf einen \textbf{Zugriffsschutz} hin, der durch entsprechende Maßnahmen wie verschlüsselte Datenübertragung, Passwortschutz der entsprechenden Systeme, Aussonderung der Systeme in nicht öffentlich zugänglichen Bereiche, \ldots unterstützt werden kann.
+
+
