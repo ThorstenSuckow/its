@@ -40,6 +40,41 @@ Den bereits in einer vorhergehenden Fußnote erwähnten \textbf{baulichen Maßna
 
 \noindent
 ``Verfügbarkeit`` wird i.d.R. durch Sicherungskonzepte, Redundanz (sowohl hinsichtlich technischer Infrastruktur als auch Datenhaltung) sowie geeigneter Notfallvorsorge (Datensicherung/-backups) sichergestellt.
-\textit{Schartner et al.} weisen in~\cite{HKRS+14}[\textbf{Tab. 3.1}, 24] außerdem noch auf einen \textbf{Zugriffsschutz} hin, der durch entsprechende Maßnahmen wie verschlüsselte Datenübertragung, Passwortschutz der entsprechenden Systeme, Aussonderung der Systeme in nicht öffentlich zugänglichen Bereiche, \ldots unterstützt werden kann.
+\textit{Schartner et al.} weisen in~\cite{HKRS+14}[\textbf{Tab. 3.1}, 24] außerdem noch auf einen \textbf{Zugriffsschutz} hin, der durch entsprechende Maßnahmen wie verschlüsselte Datenübertragung, Passwortschutz der entsprechenden Systeme, Entkoppelung der Systeme in nicht öffentlich zugänglichen Bereiche (``Air Gap``, vgl.~\cite{RFC4949}), \ldots unterstützt werden kann.
+
+\section{b)}
+
+\noindent
+\textit{Im Kapitel 3.2 der Kurseinheit ``Systemsicherheit`` haben Sie prinzipielle Angriffsformen kennengelernt (siehe Abbildung 3.2).
+Welcher der von Ihnen genannten Mechanismen kann welche Angriffsform erkennen bzw. vorbeugen?
+}
+
+\subsection*{Ausschleusen}
+\begin{itemize}
+    \itemsep0.5em
+    \item \textbf{Entkoppelung}: Sind die Systeme möglichst von unerlaubtem Zugriff geschützt, können Daten nur unter erheblichem Aufwand ausgeschleust werden
+    \item Zugangskontrollen / Zugriffskontrollen (u.a. durch Authentifizierungsmaßnahmen, auch baulicher Natur) können unerlaubtem Zugriff entgegenwirken und somit ein Ausschleusen der Daten verhindern
+\end{itemize}
+
+\subsection*{Erzeugen}
+\begin{itemize}
+    \itemsep0.5em
+    \item {MAC}: Die Urheberschaft kann mithilfe des \textit{Message Authentication Codes} nachgewiesen werden, für den sowohl Sender als auch Empfänger den Schlüssel besitzen: Hat der Angreifer den Schlüssel nicht, kann er auch keine entsprechende Nachricht erstellen
+    \item {Digitale Signaturen}: wird eine digitale Signatur verwendet, kann der öffentliche Schlüssel zur Verifikation der erstellten Nachricht und zur Zuordnung zu einem eindeutigen Urheber (= Besitzer öffentlichen / privaten Schlüssels) genutzt werden
+\end{itemize}
 
 
+\subsection*{Modifizieren}
+\begin{itemize}
+    \itemsep0.5em
+    \item {Hashverfahren}: ermöglicht Prüfsummenvergleich von Daten
+    \item {MAC}: wie \textit{Hashverfahren}, durch Schlüsselabhängigkeit auch noch Schutz gegen den Angriff \textit{Erzeugen}
+    \item {Digitale Signaturen}: wird eine digitale Signatur verwendet, kann eine Modifikation der Daten entdeckt werden (vgl.~\cite[382]{Eck18})
+\end{itemize}
+
+
+\subsection*{Unterbrechen}
+\begin{itemize}
+    \itemsep0.5em
+    \item \textbf{Redundanz}: Redundante Datenleitungen sorgen dafür, dass der Ausfall einer Leitung nicht die Verfügbarkeit der Daten gefährdet
+\end{itemize}
