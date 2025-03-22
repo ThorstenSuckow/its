@@ -78,3 +78,44 @@ Welcher der von Ihnen genannten Mechanismen kann welche Angriffsform erkennen bz
     \itemsep0.5em
     \item \textbf{Redundanz}: Redundante Datenleitungen sorgen dafür, dass der Ausfall einer Leitung nicht die Verfügbarkeit der Daten gefährdet
 \end{itemize}
+
+\section{c)}
+
+\textit{Welche Informationen erhält ein Angreifer trotz der eingesetzten Mechanismen?
+Betrachten Sie dabei jede Sicherheitsanforderung separat und losgelöst von den
+anderen.}\\
+
+\noindent
+Auch, wenn ein Angreifer nur verschlüsselte Daten erhält, lassen sich mittels der gewonnenen Metadaten der Kommunikation, also Absender und Empfänger, Datum und Uhrzeit sowie Frequenz des Datenaustausches sowie ggf. Lokalität der Kommunikationsteilnehmer Informationen ableiten (vgl.~\cite[25 f.]{Sch15b}). \\
+Diese Art der Metadatengewinnung gilt grundsätzlich für alle Sicherheitsziele - es unterscheiden sich entsprechend die gewonnenen Informationen.\\
+Für die Verfahren, bei denen Verschlüsselung eingesetzt wird, kann generell - insb. beim Datenaustausch per Email oder andere elektonische Dienste - Absender / Empfänger ermittelt werden (ggf. Identitäten) und das eingesetzte Verschlüsselungsverfahren anhand von Mustererkennung.\\
+Ausstellende Zertifizierungsstellen können anhand verwendeter Zertifikate ermittelt werden.
+
+\subsection*{Vertraulichkeit}
+\begin{itemize}
+    \itemsep0.5
+    \item Metadaten
+    \item wie ist verschlüsselt?
+\end{itemize}
+
+\subsection*{Integrität}
+\begin{itemize}
+    \itemsep0.5
+    \item werden Hashverfahren/MACs genutzt?
+\end{itemize}
+
+\subsection*{Authentizität}
+\begin{itemize}
+    \itemsep0.5
+    \item wer ist an der Kommunikation beteiligt (Zertifikate)?
+\end{itemize}
+
+\subsection*{Verfügbarkeit}
+\begin{itemize}
+    \itemsep0.5
+    \item Netzwerk-/Infrastruktur
+    \item Kommunikationsverhalten beteiligter Systeme (uni-/bidirektionales Senden)
+    \item Typen abgesendeter Nachrichten und Responses (POST Nachrichten zu Auth-Services, Redirects zu anderen Diensten usw. )
+\end{itemize}
+
+
