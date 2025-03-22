@@ -34,13 +34,13 @@ In einem weiteren Rahmen kann man das 4-Augen-Gespräch, ggf. auch unter zuhilfe
 
 \subsection*{Verfügbarkeit (Availability)}
 Das Sicherheitsziel \textbf{Verfügbarkeit} beschreibt die (möglichst) ununterbrochene Verfügbarkeit von Daten, was bspw. im Bereich \textit{Kritischer Infrastruktur} bzw. bei Behörden und Unternehmen großen öffentlichen Interesses eine wichtige Rolle spielt.\\
-Hierbei müssen mitunter wirtschaftlich relevante Daten oder personenbezogene Daten (bspw. Gesundheitsdaten) stets zur Verfügung stehen, um enstprechend wirtschaftlichen oder gesundheitlichen Schaden abzuwenden.\footnote{
+Hierbei müssen mitunter wirtschaftlich relevante Daten oder personenbezogene Daten (bspw. Gesundheitsdaten) stets zur Verfügung stehen, um enstprechend wirtschaftlichen oder persönlichen Schaden abzuwenden.\footnote{
 Den bereits in einer vorhergehenden Fußnote erwähnten \textbf{baulichen Maßnahmen} kommen in Verbindung mit Schutzkonzepten zur Erreichung des Sicherheitsziels ``Verfügbarkeit`` eine weitaus wichtigere Rolle zu, da auch \textit{höherer Gewalt} (Brände, Erdbeben, Überflutungen \ldots) aber auch Einbruch und Diebstahl (physischer Datenträger) Rechnung getragen werden muss.
 }
 
 \noindent
-``Verfügbarkeit`` wird i.d.R. durch Sicherungskonzepte, Redundanz (sowohl hinsichtlich technischer Infrastruktur als auch Datenhaltung) sowie geeigneter Notfallvorsorge (Datensicherung/-backups) sichergestellt.
-\textit{Schartner et al.} weisen in~\cite{HKRS+14}[\textbf{Tab. 3.1}, 24] außerdem noch auf einen \textbf{Zugriffsschutz} hin, der durch entsprechende Maßnahmen wie verschlüsselte Datenübertragung, Passwortschutz der entsprechenden Systeme, Entkoppelung der Systeme in nicht öffentlich zugänglichen Bereiche (``Air Gap``, vgl.~\cite{RFC4949}), \ldots unterstützt werden kann.
+``Verfügbarkeit`` wird i.d.R. durch Sicherungskonzepte (Firewalls, Intrusion Detection Systeme), Redundanz (sowohl hinsichtlich technischer Infrastruktur als auch Datenhaltung) sowie geeigneter Notfallvorsorge (Datensicherung/-backups) sichergestellt.
+\textit{Schartner et al.} weisen in~\cite{HKRS+14}[\textbf{Tab. 3.1}, 24] außerdem noch auf einen \textbf{Zugriffsschutz} hin, der durch entsprechende Maßnahmen wie verschlüsselte Datenübertragung, Passwortschutz der entsprechenden Systeme, Entkoppelung der Systeme in nicht öffentlich Bereiche (``Air Gap``, vgl.~\cite{RFC4949}), \ldots unterstützt werden kann.
 
 \section{b)}
 
@@ -94,7 +94,6 @@ Ausstellende Zertifizierungsstellen können anhand verwendeter Zertifikate ermit
 \subsection*{Vertraulichkeit}
 \begin{itemize}
     \itemsep0.5
-    \item Metadaten
     \item wie ist verschlüsselt?
 \end{itemize}
 
@@ -119,3 +118,33 @@ Ausstellende Zertifizierungsstellen können anhand verwendeter Zertifikate ermit
 \end{itemize}
 
 
+\section{d)}
+
+\textit{Erklären Sie den Unterschied zwischen präventiven und detektiven Sicherheits‐
+mechanismen. Welche der von Ihnen genannten Mechanismen sind präventiv, welche detektiv und welche erfüllen beide Eigenschaften?}\\
+
+\subsection*{Präventive Maßnahmen}
+Maßnahmen, die vorbeugend zur Erreichung der Sicherheitsziele durchgeführt werden. Dazu gehören u.a.
+
+\begin{itemize}
+    \itemsep0.5em
+    \item \textbf{Kryptografische Maßnahmen} i.A., um Spionage/ Angriffe zu erschweren
+    \item \textbf{Notfallvorsorge} um Daten im Notfall schnell wieder zur Verfügung stellen zu können
+    \item \textbf{bauliche Maßnahmen} um höherer Gewalt in angemessenem Rahmen vorzubeugen
+    \item \textbf{Schlüsselaustausch} über einen sicheren Kommunikationsweg bei MAC / symmetrischer Verschlüsselung
+    \item \textbf{Sichern der Schlüsselinfrastruktur} um der Kompromittierung von privaten Schlüsseln vorzubeugen bzw. schnell darauf reagieren zu können
+    \item \textbf{Härten der Netzwerkstruktur} durch Firewalls und Intrusion Detection Systeme
+\end{itemize}
+
+\subsection*{Detektive Maßnahmen}
+
+Maßnahmen, die bei Verletzung eines Sicherheitsziels durchgeführt werden, um Ursache zu ermitteln, und weitere präventive Schutzmaßnahmen durchzuführen.
+
+\begin{itemize}
+    \itemsep0.5
+    \item \textbf{Prüfsummenverfahren} bzw. \textbf{MACs}, um Modifikation von Daten ermitteln zu können
+    \item \textbf{Intrusion Detection Systeme} bzw. gehärtete Netzwerkstruktur mit Logs über alle Aktivitäten geben Auskunft zu Angriffen/Angriffszielen
+\end{itemize}
+
+\noindent
+Die \textbf{Prüfsummenverfahren} zusammen mit den \textbf{MACs} können zu den präventiven und detektiven Maßnahmen gezählt werden, als auch die Protokollierung und das Logging im Netzwerk.
