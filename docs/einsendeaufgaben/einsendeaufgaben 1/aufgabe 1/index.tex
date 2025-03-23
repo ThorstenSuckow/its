@@ -6,7 +6,7 @@
 ``Authentizität`` und führen Sie jeweils mindestens zwei (kryptographische) Mechanismen an, die die jeweilige Sicherheitsanforderung adressieren.}\\
 
 \noindent
-Im Folgenden werden die Begriffe kurz wiedergegeben, wobei darauf hingewiesen sei, dass die 4 Begriffe in der Fachliteratur unter dem Kürzel \textit{CIA+} (\textit{Confidentiality}, \textit{Integrity}, \textit{Availability}, \textit{Authenticity}) zusammengefasst werden (vgl.~\cite[9]{Eck18} sowie ~\cite[23 f.]{HKRS+14}). Zu weiteren Sicherheitszielen, die auch teilweise aus den genannten 4 Schutzzielen abgeleitet werden können, siehe auch~\cite[31]{BSIBasis}
+Im Folgenden werden die Begriffe kurz wiedergegeben, wobei darauf hingewiesen sei, dass die 4 Begriffe in der Fachliteratur unter dem Kürzel \textit{CIA+} (\textit{Confidentiality}, \textit{Integrity}, \textit{Availability}, \textit{Authenticity}) zusammengefasst werden (vgl.~\cite[9]{Eck18} sowie ~\cite[23 f.]{ITS1}). Zu weiteren Sicherheitszielen, die auch teilweise aus den genannten 4 Schutzzielen abgeleitet werden können, siehe auch~\cite[31]{BSIBasis}
 
 \subsection*{Vertraulichkeit}
 Im Kontext IT-Sicherheit beschreibt \textbf{Vertraulichkeit} ein Sicherheitsziel, bei dem es um den vertraulichen Austausch von Nachrichten/Informationen (im Folgenden einfach \textit{Daten}) zwischen zwei oder mehreren Benutzern geht, wobei als Benutzer nicht nur Personen verstanden werden können, sondern durchaus auch technische Systeme, wie bspw. Computer.\\
@@ -40,7 +40,7 @@ Den bereits in einer vorhergehenden Fußnote erwähnten \textbf{baulichen Maßna
 
 \noindent
 ``Verfügbarkeit`` wird i.d.R. durch Sicherungskonzepte (Firewalls, Intrusion Detection Systeme), Redundanz (sowohl hinsichtlich technischer Infrastruktur als auch Datenhaltung) sowie geeigneter Notfallvorsorge (Datensicherung/-backups) sichergestellt.
-\textit{Schartner et al.} weisen in~\cite{HKRS+14}[\textbf{Tab. 3.1}, 24] außerdem noch auf einen \textbf{Zugriffsschutz} hin, der durch entsprechende Maßnahmen wie verschlüsselte Datenübertragung, Passwortschutz der entsprechenden Systeme, Entkoppelung der Systeme in nicht öffentlich Bereiche (``Air Gap``, vgl.~\cite{RFC4949}), \ldots unterstützt werden kann.
+\textit{Schartner et al.} weisen in~\cite[\textbf{Tab. 3.1}, 24]{ITS1} außerdem noch auf einen \textbf{Zugriffsschutz} hin, der durch entsprechende Maßnahmen wie verschlüsselte Datenübertragung, Passwortschutz der entsprechenden Systeme, Entkoppelung der Systeme in nicht öffentlich Bereiche (``Air Gap``, vgl.~\cite{RFC4949}), \ldots unterstützt werden kann.
 
 \section{b)}
 
@@ -133,7 +133,7 @@ Maßnahmen, die vorbeugend zur Erreichung der Sicherheitsziele durchgeführt wer
     \item \textbf{bauliche Maßnahmen} um höherer Gewalt in angemessenem Rahmen vorzubeugen
     \item \textbf{Schlüsselaustausch} über einen sicheren Kommunikationsweg bei MAC / symmetrischer Verschlüsselung
     \item \textbf{Sichern der Schlüsselinfrastruktur} um der Kompromittierung von privaten Schlüsseln vorzubeugen bzw. schnell darauf reagieren zu können
-    \item \textbf{Härten der Netzwerkstruktur} durch Firewalls und Intrusion Detection Systeme
+    \item \textbf{Härten der Netzwerkstruktur} durch Firewalls und Intrusion Prevention Systeme
 \end{itemize}
 
 \subsection*{Detektive Maßnahmen}
