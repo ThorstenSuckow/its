@@ -9,7 +9,9 @@ heitsrelevanter Meldungen, die in den letzten Monaten stattgefunden haben, und g
 
 \begin{itemize}
     \itemsep0.5em
-    \item \textbf{Bybit-Hack} Im Februar 2025 wird die Kryptobörse \textit{Bybit} Opfer eines Hacks, bei dem über 1.5 Milliarden Dollar von nordkoreanischen Hackern erbeutet werden\footnote{
+    \item \textbf{Bybit-Hack} Im Februar 2025 wird die Kryptobörse \textit{Bybit} Opfer eines Hacks, bei dem über 1.5 Milliarden Dollar von nordkoreanischen Hackern\footnote{
+    festgestellt u.a. durch das FBI, s. \url{https://www.ic3.gov/PSA/2025/PSA250226} (abgerufen 23.03.2025)
+    } erbeutet werden\footnote{
     \url{https://announcements.bybit.com/en/article/incident-update-unauthorized-activity-involving-eth-cold-wallet-blt292c0454d26e9140/}, abgerufen 23.03.2025
     }. Es berichten u.a. Telepolis\footnote{
         \url{https://www.telepolis.de/features/Groesster-Krypto-Diebstahl-aller-Zeiten-Nordkorea-klaut-1-5-Milliarden-Dollar-bei-Bybit-10295169.html}, abgerufen 23.03.2025
@@ -76,4 +78,51 @@ In diesem Fall war die Sicherheitslücke anscheinend durch den Umstand begünsti
 
 \blockquote[]{
 ``[\ldots] some X origin servers, which respond to web requests, weren't properly secured behind the company's Cloudflare DDoS protection and were publicly visible.``
+}
+
+\subsection*{Bybit-Hack}
+
+\begin{itemize}
+    \itemsep0.5
+    \item Betroffenes Schutzziel: \textbf{Authentizität}, \textbf{Integrität}, \textbf{Vertraulichkeit}
+    \item Maßnahmen: vielfältige, nicht auf einige wenige Schutzmaßnahmen reduzierbar.
+\end{itemize}
+
+\noindent
+Bei dem Angriff wurden knapp 1,5 Milliarden US Dollar in der Kryptowährung \textit{Ethereum} gestohlen.\\
+Als Angreifer wurde die nordkoreanische Hackergruppe \textit{Lazarus}\footnote{
+    \url{https://en.wikipedia.org/wiki/Lazarus_Group}
+} verantwortlich gemacht.\\
+
+\noindent
+Der Diebstahl gelang vermutlich durch Ausspähen von Sicherheitslücken der Schlüsselinfrastruktur: Bei Multisignature-wallets\footnote{
+s. \url{https://academy.binance.com/en/articles/what-is-a-multisig-wallet}, abgerufen 23.03.2025
+} sind die Schlüssel mehrere Benutzer notwendig, um eine Transaktion durchzuführen.
+Besitzer von Kryptowährungen, bei denen Beträge in einer Adresse gespeichert sind, die nur einen einzelnen privaten Schlüssel verwenden, sind häufig Opfer von Phishing-Attacken mit dem Ziel, ihr Kryptoguthaben zu entwenden.
+Aus diesem Grund werden multisig-wallets verwendet, bei denen die Beträge durch private Schlüssel mehrere Benutzer gesichert sind (\textit{präventive Sicherheitsmaßnahme}).
+\\
+Sowohl durch Social Engineering als auch durch Schwachstellen in der Infrastruktur  von \textit{Safe\{Wallet\}}\footnote{
+    \url{https://app.safe.global/welcome}, abgerufen 23.03.2025
+}, einem Drittanbieter für multisig-wallets, wurde zunächst anhand Transaktionen mit kleineren Beträgen die Schwachstelle verifiziert, eine gewisse Zeit später wurden die Beträge dann gestohlen.\\
+Die Hacker nutzten hierbei einen kompromittierten Laptop eines Entwicklers von \textit{Safe\{Wallet\}} sowie AWS-Tokens, um MFA-Kontrollen (\textit{multi-factor authentication}) zu umgehen.
+Im Endeffekt konnte so einem Server Malware installiert werden\footnote{
+\url{https://thehackernews.com/2025/03/safewallet-confirms-north-korean.html}, abgerufen 23.03.2025
+}:
+
+\blockquote[{\url{https://x.com/gauthamzzz/status/1893004650934345889}\footnote{abgerufen 23.03.2025})}]{
+    ``All signers saw the musked UI which showed the correct address and the URL was from
+    @safe [Anm.: \textit{Safe\{Wallet\}}]. However, the signing message was to change the smart contract logic of our ETH cold wallet.``
+}\\
+
+\noindent
+Der Diebstahl erfolgte durch eine veränderte Benutzeroberfläche des multisig-wallets, bei denen die Betroffenen Transaktionen ausführten, die ungewollt ihr \textit{Cold Wallet}\footnote{etwa: Offline-Konto, inkl. privater Schlüssel} kompromittierte.
+Das Offline-Konto samt privater Schlüssel wurde also dazu genutzt, um Transaktionen auszuführen, die völlig legal Beträge auf Schattenkonten überwiesen - allerdings ohne Intention der Anwender.\\
+
+\noindent
+Das betroffene Schutzziel \textit{Vertraulichkeit} ist wahrscheinlich am ehesten durch \textit{menschliche Nachlässigkeit} zu begründen, die letztendlich zu erfolgreichem Social Engineering geführt hat.\\
+Aus den Konsequenzen daraus leiten sich Herausforderungen für den Handel mit Kryptowährungen in der Zukunft ab.
+So schliesst thehackernews.com den zitierten Artikel über den Diebstahl mit den Worten:
+
+\blockquote[]{
+    ``Verifying that the transaction you are signing will result in the intended outcome remains one of the biggest security challenges in Web3, and this is not just a user and education problem — it is an industry-wide issue that demands collective action.``
 }
