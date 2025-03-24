@@ -1,0 +1,92 @@
+\chapter{Aufgabe 3:  Studierendenausweis}
+
+\section{a)}
+
+\textit{Überlegen Sie sich zehn Szenarien, bei denen ein solcher Ausweis an der Fach‐
+hochschule sinnvoll genutzt werden könnte.}\\
+
+\vspace{5mm}
+\noindent
+Im Folgenden eine Auflistung über die Daten, die der digitale Studierendenausweis (\textbf{Fernstudium}) vorhalten könnte, und die Szenarien, die sich daraus ergeben (sofern nicht implizit ableitbar).
+Dabei wird vorausgesetzt, dass die Fernstudenten (über eine entsprechende Hardware) jederzeit lesenden und - für gewisse Daten - auch schreibenden Zugriff auf ihren Studierendenausweis haben, und - sofern nicht jedes Semester eine neue Chipkarte verschickt werden soll - diese ggf. über ein verschlüsseltes Verfahren von der Hochschule aktualisiert werden kann (``Firmwareupdate``).\\
+
+\begin{itemize}
+    \itemsep0.5em
+    \item Digitaler Studierendenausweis - Matrikelnummer, Studiengang, eingeschrieben seit, usw.
+    \item Digitales Studienbuch - Prüfungen, Prüfungsergebnisse, Ergebnisse der Einsendeaufgaben
+    \item Speicherung eines privaten Schlüssels zur Signatur von Nachrichten (Studiengangsleitung, Lehrbeauftragte, Abgabe von Online-Prüfungen usw.)
+    \item Authentifizierungstoken für externe Dienste (olat, webmail), der im 2-wöchigen Wechsel / on-demand geändert werden \textbf{muss}
+    \item Guthaben für Mensa / Cafeteria vor Ort
+    \item Identifikationskarte für Zugänge vor Ort (Schlüsselkarte Laborbetrieb, Rechenzentrum etc., Übungsräume)
+    \item Hochschulbibliothekszugang (Ausleihe)
+    \item Speichern des Semestertickets für den ÖPNV in Trier und Umgebung\footnote{was bei den externen Dienstleistern entsprechende Chip-Leser voraussetzen würde}
+\end{itemize}
+
+\section{b)}
+\textit{Für welche Sicherheitsdienste könnte ein solcher Ausweis eingesetzt werden?}\\
+
+\noindent
+Wie im vorherigen Aufgabenteil beschrieben, könnte die Chipkarte für Dienste genutzt werden, die eine Identifikation des Studierenden online (digitale Signatur) bzw. diverse Zugangsberechtigungen des Studenten im Rahmen von Token-basierten Authentifizierungsverfahren  benötigen.
+Damit ergeben sich
+
+\begin{itemize}
+    \item \textbf{Vertraulichkeit} durch das Verschlüsseln von den Daten der Studierenden auf dem Ausweis
+    \item \textbf{Integrität} durch das Signieren von Nachrichten anhand des privaten Schlüssels, was eine Nichtabstreitbarkeit von Online-Prüfungen und Einsendeaufgaben nach sich zieht
+    \item \textbf{Authentizität} durch MFA
+\end{itemize}
+
+\section{c)}
+
+\textit{Wie könnte eine solche Karte gesichert werden, damit der alleinige Besitz der
+Karte für einen Zugang zu Anwendungen nicht ausreicht? Wie könnte die Karte  geschützt werden, so dass lediglich der rechtmäßige Besitzer sie benutzen kann?}\\
+
+\noindent
+Siehe in diesem Zusammenhang auch die Definition von \textit{Authentizität} (\cite[\textbf{Definition 1.4 (Authentizität)}, 8]{Eck18}): Ganz allgemein muss ein Subjekt \textit{Credentials} vorlegen, um  seine Identität nachzuweisen (vgl.~\cite[449]{Eck18}).\\
+Es könnte bspw. eine Art Masterpassword (PIN) festgelegt werden, das - ähnlich von PINs von Geldkarten - nur dem Karteninhaber zur Verfügung steht.
+Im Zuge der \textit{Multifaktorauthentifizierung} ergibt sich hierdurch die Sicherheit durch \textit{Besitz} (Chipkarte) und \textit{Wissen} (PIN) (vgl.~\cite[24]{ITS1}).\\
+Weitere Faktoren wie \textit{Inhärenz} (Fingerabdruck) sind vorstellbar (Abgleich Daten Fingerabdruck Chip mit Fingerabdruck Benutzer).\\
+Außerdem sind \textit{Push-Authentifizierungen} denkbar, so dass an ein mobiles Gerät / per Email eine Nachricht versendet wird, wenn der Studierende eine mit der Chipkarte verbundene Aktion ausführt, die eine Authentifizierung benötigt.\\
+
+\section{d)}
+
+\textit{Überlegen Sie sich ein Notfallmanagement für den Fall, dass die Karte verloren
+geht bzw. defekt ist.}\\
+
+
+
+\begin{itemize}
+    \item Sperren der Karte für Online-Dienste, also \textit{blacklisten} der Identifikationsnummer o.ä. der Karte, so dass keine Daten der Karte verwendet werden können
+    \item Invalidierung aller (privaten) Schlüssel, die sich auf der Karte befunden haben, in der zugehörigen Schlüsselinfrastruktur
+    \item Neusetzen des \textit{Masterpassworts} durch Briefversand (PIN-Brief, Aktivierungscode per Post)
+\end{itemize}
+
+
+\section{e)}
+
+\textit{Diskutieren Sie Vor‐ und Nachteile eines solchen Studierendenausweises.}\\
+
+
+\begin{itemize}
+    \itemsep0.5em
+    \item \textbf{Vorteile}
+        \item[] Hervorzuheben sind sicherlich die Vorteile, die in der Regel mit der Digitalisierung von Daten dieser Art einhergehen.
+        Darunter fallen der einfache/einheitliche Zugriff auf die Daten, dass fachbezogene Daten akkumuliert vorliegen und nicht von verschieden Orten zusammengetragen werden müssen sowie die einfache Aktualisierung und ggf. Invalidierung.
+    \item \textbf{Nachteile}
+        \item[] Die Vorteile bestimmen im gleichen Zuge auch die Nachteile.
+    Der relativ einfache Zugriff auf die Daten erfordert ein sicheres Verschlüsselungsverfahren und eine sichere Schlüsselinfrastruktur, die Investitionen in Technik, Wissen und Personal erfordert.
+    Es muss außerdem sichergestellt werden, dass kompromittierte Daten keine Seiteneffekte bzgl. Bereiche der Studierenden nach sich zieht, die auf den ersten Blick nichts mit gewöhnlichen Daten eines Studierendenausweises zu tun haben (persönliche Adresse, Guthaben auf der Geldkarte, Matrikelnummer / Nachweis Krankenversicherung usw.)
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
