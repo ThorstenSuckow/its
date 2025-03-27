@@ -1,0 +1,67 @@
+\chapter{Aufgabe 2}
+
+\textit{Für die Ermittlung des Sicherheitsniveaus können so genannte ``Was wäre, wenn \ldots{?}``‐
+Fragen sehr hilfreich sein. Formulieren Sie zehn solcher Fragen, um in einem Unter‐
+nehmen das Informationssicherheitsniveau zu ermitteln.}\\
+
+\noindent
+Der BSI-Standard 200-2 empfiehlt in~\cite[110]{BSI200-2} für die Ermittlung des Schutzbedarfs der Geschäftsprozesse deren Bedeutung für die Institution hinterfragt werden soll.
+Dies kann durch geeignete ``Was wäre, wenn \ldots{?}``-Fragen unterstützt werden, wobei es ausreichend sein sollte, diese mit einem ausgewählten Personenkreis - bspw. ausgewiesene Fachexperten der jeweiligen Fachabteilungen, Abteilungs-/Standortleiter - zu sammeln, zu erörtern und basierend auf einer Risikoanalyse, aus der sich ein Verhältnis zwischen Notwendigkeit, Umsetzbarkeit und Kosten/Aufwand ergibt - in die Einstufung des Sicherheitsniveaus einfliessen zu lassen.\\
+
+\noindent
+Als grobe Leitlinie für die Formulierung der Fragen könnten die \textit{CIA+}-Schutzziele dienen, die auch im Folgenden zur Formulierung der Fragen genutzt werden.
+
+\begin{itemize}
+    \itemsep0.5em
+    \item \textbf{Vertraulichkeit} - \textit{Was wäre, wenn \ldots}
+    \begin{itemize}
+        \item[] \ldots die unternehmensinternen Emails von anderen mitgelesenen werden?
+        \item[] \ldots Emails an Kunden von anderen mitgelesenen werden?
+        \item[] \ldots Ergebnisse der Projekte / Stand der Projekte von anderen in Erfahrung gebracht wird?
+        \item[] \ldots rechtlich geschützte Daten technisch nicht ausreichend gesichert werden?
+    \end{itemize}
+    \item \textbf{Integrität} - \textit{Was wäre, wenn \ldots}
+    \begin{itemize}
+        \item[] \ldots nicht sichergestellt werden kann, dass die Kunden-/Unternehmenskommunikation geschützt ist?
+        \item[] \ldots Steuerdaten für die ICS-Systeme gefälscht werden?
+        \item[] \ldots die Manipulation von Daten erst spät auffällt?
+    \end{itemize}
+    \item \textbf{Verfügbarkeit} - \textit{Was wäre, wenn \ldots}
+    \begin{itemize}
+        \item[] \ldots unsere interne IT ausfällt?
+        \item[] \ldots die externe Internet-Anbindung wegfällt?
+        \item[] \ldots es zu einem Löschen von geschäftskritischen Daten kommt?
+        \item[] \ldots nicht schnell genug auf einen Ausfall/Wegfall reagiert werden kann?
+    \end{itemize}
+    \item \textbf{Authentizität} - \textit{Was wäre, wenn \ldots}
+    \begin{itemize}
+        \item[] \ldots Dritte Zugangsdaten zu unseren internen IT-Bereichen erhalten?
+        \item[] \ldots private Schlüssel kompromittiert werden?
+        \item[] \ldots Zertifikate auslaufen / ungültig werden?
+        \item[] \ldots sich Dritte als Kunden / Geschäftspartner ausgeben?
+        \item[] \ldots die Kompromittierung von Authentifizierungsdaten erst spät auffällt?
+    \end{itemize}
+\end{itemize}
+
+\noindent
+Bei der Fragestellung zeigt sich, dass die Zeit eine durchaus kritische Metrik sein kann.
+
+\noindent
+Aus den aufgeführten Fragen leiten sich weitere Fragen ab, die direkte Auswirkungen auf den Geschäftsbereich eines Unternehmens haben und deshalb für eine Risikoanalyse und damit verbundene Verhältnismäßigkeit entsprechender Maßnahmen haben können, die nachfolgend aufgeführt sind\footnote{
+Richtlinien zur Fragestellung bietet auch der BSI-Standard in seinem Anhang, vgl.~\cite[173 ff.]{BSI200-2}
+}.
+
+\begin{itemize}
+    \itemsep0.5em
+    \item  Werden Verbindungsdaten / Infrastruktur / Authentifizierungsdaten offengelegt?
+    \item  Werden Geschäftsstrategie / Geschäftsgeheimnisse offengelegt?
+    \item  Wird Verhandlungstaktik / Kundenanforderungen offengelegt, so dass Dritte dies zur Abwerbung nutzen könnten?
+    \item  Können sensible Informationen der Kunden / des Unternehmens unbemerkt zugunsten Dritter geändert werden?
+    \item  Werden Geschäftsgeheimnisse so aufbewahrt, dass eine Änderung dieser nachhaltig die Wirtschaftlichkeit / die Solvenz / die Betriebsbereitschaft des Unternehmens gefährden?
+    \item  Gilt das gleiche für Daten der Produktion (ICS)?
+    \item  Ist unser Tagesgeschäft abhängig von einer funktionierenden IT-Infrastruktur? (Software-/Hardwarefehler, interner Geschäftsbetrieb / externer Geschäftsbetrieb)
+    \item  Wie stellt unser Backup-Konzept ein Fortbestand der Produktion sicher, wenn Daten wegfallen / die Hardware / die ICS-Systeme ausfallen?
+    \item  Sind Produktionsdaten interner Systeme ausreichend geschützt, und kann ein Passwortmissbrauch schnell aufgedeckt werden?
+I   \item  Ist unsere Schlüsselinfrastruktur auf eine umgehende Invalidieren kompromittierter Schlüssel ausgelegt?
+    \item  Können wir bei der elektronischen Kommunikation die Identität der Kommunikationsteilnehmer garantieren?
+\end{itemize}
