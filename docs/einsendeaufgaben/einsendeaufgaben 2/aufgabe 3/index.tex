@@ -1,0 +1,140 @@
+\chapter{Aufgabe 3}
+
+\section{a)}
+
+\textit{Welche Phase kennzeichnet den Beginn des Sicherheitsprozesses?}\\
+
+\noindent
+Der BSI-Standard definiert, dass zur Erlangung eines angemessenen und ausreichenden Sicherheitsniveais für die Informationssicherheit in einem Unternehmen ein \textit{geplantes Vorgehen} und eine \textit{adäquate Organisationsstruktur} erforderlich ist, zudem ist eine \textit{Strategie} zur Erreichung der Sicherheitsziele notwendig (vgl.~\cite[20]{BSI200-2}.\\
+
+\noindent
+I.a. fällt die \textit{strategische Ausrichtung} einer Institution in den Verantwortungsbereich der Leitungsebene, weshalb diese den Sicherheitsprozess \textbf{initiieren} muss.
+Die operative Durchführung wird dann durch den Informationssicherheitsbeauftragten sichergestellt:
+
+\blockquote[{\cite[20]{BSI200-2}}]{
+    ``Die oberste Leitungsebene muss den Sicherheitsprozess initiieren, steuern und kontrollieren. Die Leitungsebene ist diejenige Instanz, die die Entscheidung über den Umgang mit Risiken treffen und die
+    entsprechenden Ressourcen zur Verfügung stellen muss.
+    [\ldots]
+    Die operative Aufgabe „Informationssicherheit“ wird allerdings typischerweise an
+    einen Informationssicherheitsbeauftragten (ISB) delegiert.
+    ``
+}
+
+\noindent
+Die Initiierung des Sicherheitsprozesses umfasst neben der Übernahme der Verantwortung durch die Leitungsebene auch die Planung
+\begin{itemize}
+    \itemsep0.5em
+    \item des Sicherheitsprozesses
+    \item[] sowie
+    \item zeitlicher und finanzieller Ressourcen
+\end{itemize}
+
+\noindent
+Außerdem wird eine  Entscheidung für eine Vorgehensweise getroffen.\\
+
+\noindent
+Im Anschluss wird die \textbf{Leitlinie zur Informationssicherheit} erstellt, wie \textit{Münch und Schaumüller-Bichl} in ihrer Abbildung \textit{Phasen des Sicherheitsprozesses mit IT-Grundschutz} in~\cite[\textbf{Abb. 3.2}, 32]{ITS2} verdeutlichen.
+Die Leitlinie hält fest, ``welche Sicherheitsziele und welches Sicherheitsniveau die Institution anstrebt`` (\cite[32]{ITS2}).
+
+
+\section{b)}
+
+\textit{Wie wird das ``Maximum‐Prinzip`` im Rahmen der Schutzbedarfsfeststellung für IT‐Systeme definiert?}\\
+
+\noindent
+Der Schutzbedarf von Anwendungen in einem IT-System - wobei unter ``Anwendung`` nicht nur Software-, sondern auch Hardware-Komponenten verstanden werden können - wird auf Basis der Schutzziele \textit{Vertraulichkeit}, \textit{Integrität} sowie \textit{Verfügbarkeit} bestimmt.
+Für die Bewertung kann eine Skala verwendet werden, die bspw. die Werte \textit{niedrig}, \textit{normal}, \textit{hoch} enthält.\\
+Der Schutzbedarf ergibt sich dann aus dem den Sicherheitszielen zugeordneten Maximum: Wird für eine Komponente bspw. der Schutbedarf bzgl. \textit{Vertraulichkeit} und \textit{Integrität} als \textit{mittel} eingestuft, die \textit{Verfügbarkeit} aber als \textit{hoch}, wird die Anwendung entsprechend dem Maximum-Prinzip als insgesamt \textit{hochschutzbedürftig} eingeordnet (vgl.~\cite[114]{BSI200-2}).
+
+\section{c)}
+
+\textit{Kennzeichnen Sie aus der folgenden Auswahl die sicherheitsrelevanten Bereiche,
+    die einen hohen oder sehr hohen Schutzbedarf besitzen oder als
+    sicherheitskritisch eingestuft werden können.
+}\\
+
+\begin{enumerate}
+    \itemsep0.5em
+    \item IT‐Systeme mit höherem Schutzbedarf - \textbf{hoch}
+    \item Kommunikationsverbindungen nach außen  - \textbf{hoch}
+    \item Kommunikationsverbindungen mit hochschutzbedürftigen Daten  - \textbf{sehr hoch}
+    \item Kommunikationsverbindungen, über die bestimmte Daten nicht transportiert werden dürfen  - \textbf{sicherheitskritisch}
+\end{enumerate}
+
+
+\section{d)}
+
+\textit{Bestimmen Sie die richtige Reihenfolge der Durchführung einer Risikoanalyse!
+\begin{enumerate}
+    \item Schätzung der Eintrittswahrscheinlichkeiten der Bedrohungen
+    \item Kombination der Eintrittswahrscheinlichkeiten mit dem Schutzbedarf zur
+    Risikoermittlung
+    \item Herausarbeiten der relevanten Bedrohungen
+    \item Auswahl adäquater Sicherheitsmaßnahmen für untragbare Risiken
+\end{enumerate}
+}\\
+\vspace{5mm}
+\noindent
+Die Reihenfolge kann wie folgt festgelegt werden\footnote{
+vgl. hierzu auch \textit{Risikoanalyse nach BSI-Standard 200-3},~\cite[7]{BSI200-3}
+}:
+
+\begin{itemize}
+    \itemsep0.5em
+    \item[] \textbf{3.} Im ersten Schritt erfolgt die Identifikation und das \textbf{Herausarbeiten relevanter Bedrohungen}.
+    \item[] \textbf{1.} Im Anschluss daran wird geschätzt, wie hoch die \textbf{Eintrittswahrscheinlichkeit der Bedrohung} ist - ist diese vernachlässigbar, müssen Maßnahmen zur Abwehr an dieser Stelle nicht weiter verfolgt werden.
+    \item[] \textbf{2.} Danach wird die \textbf{Eintrittswahrscheinlichkeit mit dem Schutzbedarf der Anwendung kombiniert} - ist der Schutzbedarf einer Komponente \textit{sehr hoch}, die Eintrittswahrscheinlichkeit aber \textit{sehr niedrig}, können für diese Bedrohung u.U. weniger Ressourcen verbraucht und an anderer Stelle sinnvoller genutzt werden (bspw. müsste in einem entsprechenden Szenario die Entkoppelung eines Systems aus einem öffentlich in einen privat zugänglichen Bereich nicht weiter verfolgt werden)
+    \item[] \textbf{4.} Zum Schluss findet die \textbf{Auswahl adäquater Sicherheitsmaßnahmen für untragbare Risiken} statt- sind die Risiken zu hoch, um die Bedrohung zu vernachlässigen, müssen angemessene Schutzmaßnahmen festgelegt werden
+\end{itemize}
+
+\section{e)}
+
+\textit{Ein IT‐System wird zum Betrieb von zwei Anwendungen benötigt. Die erste hat
+den Schutzbedarf ``hoch`` bezüglich Vertraulichkeit und ``normal`` bezüglich
+Integrität, die zweite hat den Schutzbedarf ``normal`` bezüglich Vertraulichkeit
+und ``hoch`` bezüglich Integrität. Welchen Schutzbedarf bestimmen Sie anhand
+dieser Informationen für das IT‐System?}\\
+
+\noindent
+Die Schutzbedarfsfeststellung ist in Tabelle~\ref{tab:schutzbedarf} angegeben.
+Da mindestens eine Anwendung in einem Schutzziel einen hohen Schutzbedarf hat, ist das IT-System für das jeweilige Schutzziel insgesamt \textbf{hochschutzbedürftig}.
+
+\begin{table}[h!]
+    \setlength{\tabcolsep}{0.5em}
+    \def\arraystretch{1.5}
+    \centering
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{} & \textbf{Vertraulichkeit} & \textbf{Integrität} \\
+        \hline
+        \textbf{Anwendung A} & hoch & normal  \\
+        \hline
+        \textbf{Anwendung B} & normal & hoch \\
+        \hline
+        \hline
+        \textbf{Schutzbedarf IT-System} & hoch & hoch \\
+        \hline
+
+    \end{tabular}
+    \caption{Schutzbedarfseinstufung für ein IT-System mit den Anwendungen A und B.}
+    \label{tab:schutzbedarf}
+\end{table}
+
+\section{f)}
+
+\textit{Welche Funktionsträger müssen bei der Entwicklung von Schadensszenarien für
+Geschäftsprozesse und Anwendungen unbedingt nach ihrer persönlichen
+Einschätzung befragt werden?
+\begin{enumerate}
+    \item Verantwortliche für den Geschäftsprozess oder die Anwendung
+    \item Geschäftsführer der Institution
+    \item Benutzer der Anwendung
+    \item Verwaltungsabteilung der Institution
+\end{enumerate}
+}\\
+
+\vspace{5mm}
+
+\noindent
+Es sollten Verantwortliche und Experten aus dem \textbf{fachlichen} und \textbf{operativen} Umfeld der Geschäftsprozesse und damit verbundenen Anwendungen befragt werden, also insb. \textbf{1.}.\\
+Mit aufgenommen in die Befragung können auch die \textbf{Benutzer der Anwendung} (\textbf{2.}), sofern ``Anwendung`` sowohl institutionsinterne Hardware- und Software-Komponenten umfasst und die Anwender wertvolle Hinweise auf den möglichen Schutzbedarf und Bedrohungen bzgl. der Anwendung geben können.
