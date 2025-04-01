@@ -1,0 +1,83 @@
+\chapter{Aufgabe 3}
+
+\textit{Es seien $x$, $n_1$ und $n_2$ positive ganze Zahlen. Beweisen oder widerlegen Sie
+folgende allgemeine Aussage: $(x \ \text{MOD} \ n_1) \ \text{MOD} \ n_2 = (x \ \text{MOD} \ n_2) \ \text{MOD} \ n_1$.}\\
+
+\noindent
+\textbf{Beweis:}\\
+
+\noindent
+Seien $s_1, s_2, n_1, n_2, r_1, r_2 \in \mathbb{N}$ mit $0 \leq r_1 < n_1$ sowie $0 \leq r_2 < n_2$, so dass
+
+\begin{equation}\notag
+    x = s_1 n_1 + r_1 \Rightarrow r_1 = x \ \text{MOD} \ n_1
+\end{equation}
+
+\noindent
+und
+
+\begin{equation}\notag
+x = s_2 n_2 + r_2 \Rightarrow r_2 = x \ \text{MOD} \ n_2
+\end{equation}
+
+\noindent
+gilt.\\
+
+\noindent
+Wir finden leicht Zahlen $x = 5, n_1 = 2, n_2 = 3$, für die wir die Aussage für den allgemeinen Fall widerlegen können, denn:
+
+\begin{equation}\notag
+    \begin{split}
+        r_1 &= 5 \ \text{MOD} \ 2 = 1\\
+        r_2 &= 5 \ \text{MOD} \ 3 = 2
+    \end{split}
+\end{equation}
+
+\noindent
+womit gilt:
+
+\begin{equation}\notag
+\begin{split}
+(5 \ \text{MOD} \ 2) \text{MOD} \ 3  = 1 \ \text{MOD} \ 3 = 1 \neq 0 = 2 \ \text{MOD} \ 2 = (5 \ \text{MOD} \ 3) \text{MOD} \ 2
+\end{split}
+\end{equation}
+
+
+\qed
+
+
+\section{b)}
+
+\textit{Entwerfen Sie ein Verfahren, mit dessen Hilfe ein (vorgegebener) zufälliger 128‐
+Bit‐AES‐Schlüssel k vertraulich und authentisch von A an B gesendet werden
+kann. Hierbei können Sie davon ausgehen, dass bei der Übertragung keine Fehler
+auftreten. Im Gegensatz zum klassischen Envelope‐System dürfen Sie hier allerdings lediglich einen einzigen 512‐Bit‐Block übertragen.
+Hinweis: Achten Sie bei der Kombination der Basismechanismen Verschlüsselung und Signatur auf die Reihenfolge der Anwendung.}\\
+
+\noindent
+
+\begin{enumerate}
+    \itemsep0.5em
+    \item Bereitstellen des Schlüssel $k$ als 128 Bitfolge
+    \item Erstellen der RSA-Signatur von $s= S(k, d_A)$ ($d_A$ = privater Schlüssel von $A$) (\textit{Authentizität})
+    \item Verschlüsseln von $k||s$ mit dem öffentlichen Schlüssel von $B$ über \textit{RSA} (Gesamtgröße $\rightarrow$ 512 Bit) (\textit{Vertraulichkeit})
+    \item $B$ entschlüsselt $k||s$  mit seinem privaten Schlüssel.
+    \item $B$ überprüft die Signatur mit dem öffentlichen Schlüssel von $A$.
+    Wenn der Vergleich übereinstimmt, ist die Authentizität garantiert, $k$ kann zum Entschlüsseln verwendet werden.
+\end{enumerate}
+
+
+\section{c)}
+
+\textit{Wie müssen Sie in b) vorgehen, wenn nicht sichergestellt werden kann, dass die
+Übertragung fehlerfrei ist?}\\
+
+\noindent
+Man könnte mit \textit{Paritätsbits} arbeiten, die eine Überprüfung der empfangenen Bitfolge auf gerade bzw. ungerade Parität ermöglicht.
+Schlägt die Paritätsprüfung fehl, kann die Nachricht verworfen werden und ggf. eine erneute Zusendung des Schlüssels angefordert werden.
+Das würde bedeuten, dass der 512-Bit-Block faktisch verlängert wird.\\
+
+\noindent
+Bei einzelnen Bitfehlern in dem 512-Bit-Block würden Übertragungsfehler beim Entschlüsseln nicht zwingend erkannt werden, wenn es sich um einen RSA-verschlüsselten \textbf{Klartext} handelt - ggfl. würden nur fehlerhafte Werte in der entschlüsselten Nachricht auftauchen, die im besten Fall keinen Sinn ergeben.\\
+Allerdings behandeln wir an dieser Stelle eine Signatur und einen Schlüssel, die mit RSA verschlüsselt wurden.
+Spätestens bei Anwendung der entschlüsselten Komponenten würden bei der Signaturüberprüfung  (Übertragungs-)Fehler auffallen, da eine Signatur auch \textit{Integrität} sicherstellt - also sind in diesem Fall keine weiteren Maßnahmen nötig.
