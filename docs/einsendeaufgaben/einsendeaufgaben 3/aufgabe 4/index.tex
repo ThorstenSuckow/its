@@ -1,0 +1,88 @@
+\chapter{Aufgabe 4}
+
+\noindent
+Gegeben:
+
+\begin{itemize}
+    \item Sender A, Empfänger B, C, D, E
+    \item Datensatzsammlung M - 20 MByte
+    \item RSA‐Verschlüsselungsverfahren -  Durchsatz von 1024 Bit/Sekunde
+    \item AES - Durchsatz von 1 MByte/Sekunde
+    \item öffentliche RSA Parameter der Benutzer - 1024 Bit
+\end{itemize}
+
+\section{a)}
+\textit{Ermitteln Sie die Zeit, die Benutzer A benötigt, wenn er die Datensammlung M
+mit dem RSA‐Verfahren verschlüsselt. Die hierzu erforderlichen öffentlichen
+RSA‐Parameter der Benutzer (jeweils 1024 Bit) seien ihm dabei authentisch
+bekannt.}\\
+
+\noindent
+Die Datensatzsammlung umfasst 20 MByte.
+Wir gehen hier von der Maßeinheit \textbf{MebiByte} (MiB) aus, es sind also insgesamt
+
+\begin{equation}\notag
+20 \ \text{MByte} = 20 \cdot 2^{20}\  \text{Byte} = 20.971.520\  \text{Byte} = 167.772.160\  \text{Bit}
+\end{equation}
+
+\noindent
+zu verschlüsseln.\\
+
+\noindent
+Sender A verschlüsselt mit den jeweiligen öffentlichen Schlüsseln von B, C, D, E die Datensatzsammlung M.
+Der Verschlüsselungsvorgang muss also insgesamt 4 mal durchlaufen werden. \\
+
+\noindent
+Wir erhalten für die Dauer der Verschlüsselung einer Nachricht
+
+\begin{equation}\notag
+\frac{167.772.160\ \text{Bit}}{1024\ \text{Bit / sek}} = 163.840\ \text{Sekunden}
+\end{equation}
+
+\vspace{2mm}
+
+\noindent
+Bei einem Durchsatz von 1024 Bit/Sekunde wird für einen Verschlüsselungsvorgang für M also
+
+\begin{equation}\notag
+\frac{163.840}{60} \approx 2731\ \text{Sekunden}\ \approx 45,5 \ \text{Stunden}
+\end{equation}
+
+\noindent
+dauern, für alle Nachrichten würden also knapp 7 Tage benötigt.
+
+\section{b)}
+\textit{Ermitteln Sie die Zeit, die Benutzer A benötigt, wenn er die Datensammlung M
+mit dem AES verschlüsselt. Gehen Sie dabei davon aus, dass jeder Benutzer mit
+jedem anderen einen AES‐Schlüssel authentisch und vertraulich vereinbart hat
+(und diese Schlüssel alle unterschiedlich sind).}\\
+
+\noindent
+Bei einem Durchsatz von 1 MByte/Sekunde ($1.048.576$ Byte/Sekunde= $8.388.608$ Bit / Sekunde) wird für einen Verschlüsselungsvorgang für M
+
+\begin{equation}\notag
+\frac{167.772.160\ \text{Bit}}{8.388.608\ \text{Bit / sek}} = 20\ \text{Sekunden}
+\end{equation}
+
+\vspace{2mm}
+
+\noindent
+benötigt, insg. also 80 Sekunden für alle Nachrichten.
+
+\section{c)}
+
+\textit{Wie kann Benutzer A die Verschlüsselung von M bewältigen, wenn er die Datensammlung genau einmal verschlüsseln will und lediglich die öffentlichen RSA‐Parameter der Benutzer (jeweils 1024 Bit) authentisch bekannt sind?}\\
+
+\noindent
+Der Benutzer kann die öffentlichen RSA-Parameter der Empfänger wie folgt nutzen:
+
+\begin{enumerate}
+    \itemsep0.5em
+    \item Sitzungsschlüssel $k_s$ generieren (AES)
+    \item mit diesem den Nachrichtentext \textbf{einmal} verschlüsseln: $c = E(m, k_s)$
+    \item Sitzungsschlüssel mit den öffentlichen Parametern der Empfänger RSA-verschlüsseln: $K_{B|C|D|E}=E(k_s, OS_{B|C|D|E})$
+    \item Schlüssel signieren (mit seinem privaten Schlüssel): $s_{B|C|D|E} = S(K_{B|C|D|E}, GS_{A})$
+\end{enumerate}
+
+\noindent
+Der Empfänger erhält dann den signierten Schlüssel sowie den verschlüsselten Nachrichtentext, kann die mittels seinem privaten Schlüssel den Sitzungsschlüssel entschlüsseln und die Authentizität des Schlüssels anhand der Signatur nachweisen (unter Verwendung des öffentlichen Schlüssels vom Sender), und im Anschluss die Nachricht AES-entschlüsseln (\textit{Hybrides Kryptosystem}, vgl.~\cite[95 f.]{ITS3}).
