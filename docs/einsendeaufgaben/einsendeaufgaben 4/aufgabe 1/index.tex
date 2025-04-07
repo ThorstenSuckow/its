@@ -1,6 +1,5 @@
 \chapter{Aufgabe 1}
 
-
 \section{Sicherheitsziel}
 
 Die Sicherheitsziele für dieses Szenario lassen sich klassifizieren in
@@ -21,44 +20,43 @@ Darüber hinaus hat noch das Sicherheitsziel \textbf{Verbindlichkeit} eine trage
 Im Folgenden soll kurz auf die einzelnen Sicherheitsziele eingegangen werden.
 
 \subsection{Vertraulichkeit}
-Das Sicherheitsziel \textbf{Vertraulichkeit} betrifft alle Kommunikationswege, an denen die Kommunikationsteilnehmer \textit{Kunde}, \textit{Bankangestellte} sowie die IT-Systeme der Bank untereinander teilnehmen. Diese sollen i.F. bei der weiteren Begriffsverwendung auch die Bankangestellten mit einbeziehen, i.d.R. findet der überweigende Austausch elektronischer Informationen ohnehin mit den automatisierten System der Bank statt (anwendungsspezifisch), und direkte Kommunikation mit Bankangestellten meist nur bei Supportanfragen.\\
+Das Sicherheitsziel \textbf{Vertraulichkeit} betrifft alle Kommunikationswege, an denen die Kommunikationsteilnehmer \textit{Kunde}, \textit{Bankangestellte} sowie die IT-Systeme der Bank untereinander teilnehmen. Diese sollen i.F. bei der weiteren Begriffsverwendung auch die Bankangestellten mit einbeziehen, i.d.R. findet der überwiegende Austausch elektronischer Informationen ohnehin mit den automatisierten Systemen der Bank statt (anwendungsspezifisch), und direkte Kommunikation mit Bankangestellten meist nur bei Supportanfragen.\\
 Aus der Sensibilität der übertragenen Daten lässt sich unmittelbar dieses Sicherheitsziel ableiten, da es Dritten nicht gestattet sein darf, Kontobewegungen zu verfolgen oder gar Geschäftsgeheimnisse der Bank / der Kunden in Erfahrung zu bringen. Verschlüsselung der Daten ist in dieser Hinsicht ein selbstverständliches Sicherheitsziel.
 
 \subsection{Integrität}
-Das Sicherheitsziel \textbf{Integrität} muss durch Signaturverfahren erreicht werden und soll sicherstellen, dass Daten nicht manipuliert werden können. Durch dritte könnten sonst eigentlich auf den ersten Blick legal wirkende Transaktionen auf fremde Konten angewendet werden, Geldsummen verfälscht werden usw.\footnote{
-siehe hierzu auch den \etxtit{Bybit-Hack} Anfang 2025, \url{https://www.csis.org/analysis/bybit-heist-and-future-us-crypto-regulation}, abgerufen 07.04.2025
+Das Sicherheitsziel \textbf{Integrität} muss durch Signaturverfahren erreicht werden und soll sicherstellen, dass Daten nicht manipuliert werden können. Durch Dritte könnten sonst eigentlich auf den ersten Blick legal wirkende Transaktionen auf fremde Konten angewendet werden, Geldsummen verfälscht werden usw.\footnote{
+    siehe hierzu auch den \textit{Bybit-Hack} Anfang 2025, \url{https://www.csis.org/analysis/bybit-heist-and-future-us-crypto-regulation}, abgerufen 07.04.2025
 }.
-Hierzu bedarf es \textit{direkter Maßnahmen} durch die Bank zur Zertifikatserstellung - und-pflege für die Online-Server unter Einbeziehung einer (oder mehrerer)  \textit{Trusted Authorities} und \textit{indirekte Maßnahmen} durch die Kunden, in deren Verantwortungsbereich hauptsächlich die manuelle Überprüfung von Zertifikationsinformationen der vermeintlichen Bank als Kommunikationsteilnehmer in diesem Szenario betrifft. Außerdem muss der Kunde dafür Sorge tragen, dass sein System und der verwendete Webbrowser auf dem neusten Stand ist, um Sicherhitslücken möglichst auzuschließen sowie die Funktionalität zum Informationsaustausch auf der Ebene der Signatur/Verschlüsselung/Zertifikatsüberprüfung auf dem neusten Stand zu halten.
+Hierzu bedarf es \textit{direkter Maßnahmen} durch die Bank zur Zertifikatserstellung und -pflege für die Online-Server unter Einbeziehung einer (oder mehrerer) \textit{Trusted Authorities} und \textit{indirekter Maßnahmen} durch die Kunden, in deren Verantwortungsbereich hauptsächlich die manuelle Überprüfung von Zertifikatsinformationen der vermeintlichen Bank als Kommunikationsteilnehmer in diesem Szenario betrifft. Außerdem muss der Kunde dafür Sorge tragen, dass sein System und der verwendete Webbrowser auf dem neuesten Stand ist, um Sicherheitslücken möglichst auszuschließen sowie die Funktionalität zum Informationsaustausch auf der Ebene der Signatur/Verschlüsselung/Zertifikatsüberprüfung auf dem neuesten Stand zu halten.
 
 \subsection{Verfügbarkeit}
 Hinsichtlich der Ausfallsicherheit sowie der allgemeinen, ununterbrochenen Verfügbarkeit der IT-Systeme der Bank müssen ebenfalls besondere Maßnahmen ergriffen werden, um den Kunden der Bank den Zugriff auf ihre Konten sowie die Durchführung von Online-Finanzgeschäften zu ermöglichen.\\
-Eine Bank muss dabei nicht bloß im Sinne ihrer (Privat-)Kunden handeln: Als Teil der \textit{Kritischen Infrastruktur} handelt sie auch  im (volks-)wirtschaftlichen Interesse:
+Eine Bank muss dabei nicht bloß im Sinne ihrer (Privat-)Kunden handeln: Als Teil der \textit{Kritischen Infrastruktur} handelt sie auch im (volks-)wirtschaftlichen Interesse:
 
 \blockquote[{``Kritische Infrastrukturen``\footnote{
-\url{https://www.bafin.de/DE/PublikationenDaten/Jahresbericht/Jahresbericht2017/Kapitel2/Kapitel2_7/Kapitel2_7_5/kapitel2_7_5_node.html}, abgerufen 07.04.2025
+    \url{https://www.bafin.de/DE/PublikationenDaten/Jahresbericht/Jahresbericht2017/Kapitel2/Kapitel2_7/Kapitel2_7_5/kapitel2_7_5_node.html}, abgerufen 07.04.2025
 }, Hervorhebung eigene}]{
-``Kritische Infrastrukturen im Sinne des BSI-Gesetzes sind Einrichtungen, Anlagen oder Teile davon, die den Sektoren Energie, Informationstechnik und Telekommunikation, Transport und Verkehr, Gesundheit, Wasser, Ernährung oder \textbf{Finanz- und Versicherungswesen} angehören und die von hoher Bedeutung für das Funktionieren des Gemeinwesens sind, weil durch ihren Ausfall oder ihre Beeinträchtigung erhebliche Versorgungsengpässe oder Gefährdungen für die öffentliche Sicherheit in Deutschland einträten.``
+    ``Kritische Infrastrukturen im Sinne des BSI-Gesetzes sind Einrichtungen, Anlagen oder Teile davon, die den Sektoren Energie, Informationstechnik und Telekommunikation, Transport und Verkehr, Gesundheit, Wasser, Ernährung oder \textbf{Finanz- und Versicherungswesen} angehören und die von hoher Bedeutung für das Funktionieren des Gemeinwesens sind, weil durch ihren Ausfall oder ihre Beeinträchtigung erhebliche Versorgungsengpässe oder Gefährdungen für die öffentliche Sicherheit in Deutschland einträten.``
 }\\
 
 \noindent
-Nach IT-SiG 2.0 / BSI-KritisV kommt ihnen aus diesem Grund eine besondere Verantwortung zu, die die IT-Systeme der Bank / des Finanzdienstlleisters hinsichtlich der \textbf{Verfügbarkeit} sowie der in diesem Abschnitt genannten Sicherheitsziele zu erfüllen haben.
+Nach IT-SiG 2.0 / BSI-KritisV kommt ihnen aus diesem Grund eine besondere Verantwortung zu, die die IT-Systeme der Bank / des Finanzdienstleisters hinsichtlich der \textbf{Verfügbarkeit} sowie der in diesem Abschnitt genannten Sicherheitsziele zu erfüllen haben.
 
 \subsection{Authentizität und Verbindlichkeit}
 Bei der Kommunikation mit den Kunden der Bank sowie angeschlossener Systeme muss sichergestellt sein, dass die (Privat-)Personen und IT-Systeme diejenigen Identitäten besitzen, für die sie sich ausgeben.
 Es muss also sichergestellt werden, dass die Identitäten der jeweiligen Kommunikationsendpunkte sichergestellt sind.
-Dies fängt bei den Kunden Der Bank durch entsprechende Sicherheitsmaßnahmen zum Nachweis der Identifikation bei Online-ID-Verfahren (Face-2-Face über Webcam, Brief PIN, Zusendung Ausweiskopie etc ) an und geht über die bereits angesprochenen Zertifikate für die IT-Systeme der Bank.\\
-Im Allgemeinen muss sichergestellt sein, dass die Kommunikation - vor allem bei den Tagesgeschäften der Online-Kunden, rechtsverbindlich ist.
+Dies fängt bei den Kunden der Bank durch entsprechende Sicherheitsmaßnahmen zum Nachweis der Identifikation bei Online-ID-Verfahren (Face-2-Face über Webcam, Brief-PIN, Zusendung Ausweiskopie etc.) an und geht über die bereits angesprochenen Zertifikate für die IT-Systeme der Bank.\\
+Im Allgemeinen muss sichergestellt sein, dass die Kommunikation – vor allem bei den Tagesgeschäften der Online-Kunden – rechtsverbindlich ist.
 Über diese Rechtsverbindlichkeit müssen sich darüber hinaus alle beteiligten Kommunikationspartner im Klaren sein.
-
 
 \section{Angriffsformen und Bedrohungen}
 
-Im Folgenden werden die einzelnen Architekturbausteine laut Aufgabenstellung gelistet und eine grobe Übersicht über  Angriffsformen und Bedrohungen aufgelistet, denen diese ausgesetzt sind.
+Im Folgenden werden die einzelnen Architekturbausteine laut Aufgabenstellung gelistet und eine grobe Übersicht über Angriffsformen und Bedrohungen aufgelistet, denen diese ausgesetzt sind.
 
 \subsection{Rechner der Kunden / Rechner der Bankangestellten}
 
-Kunden kommen eine besondere Sorgfaltspflicht bei der Pflege der eigenen Software zuteil, was insbesondere Aktualisierung ihres Betriebssystems, Einspielen von Patches, Antti-Viren Software {etc.} betrifft, damit Schadsoftware auf diesen Kommunikationsendpunkten möglichst ausgeschlossen werden, {insb.} im Interesse der Finanztransaktionen dieser Kommunikationsteilnehmer.\\
-Hinsichtlich der Rechner der Bankangestellten gelten dieselben Sicherheitsmaßnahmen, wobei hier i.d.R. die angestellten der IT-Abteilungen dafür Sorge tragen, dass die Rechner gesichert sind, Sorgfaltspflicht kommt aber auch den Mitarbeitern zu, wenn sie {bspw.} Laptops auch extern verwenden, oder externe Hardware wie Kameras, USB-Sticks an die Rechner \textit{im inneren} des IT-Netzes der Bank verwenden.
+Kunden kommt eine besondere Sorgfaltspflicht bei der Pflege der eigenen Software zu, was insbesondere Aktualisierung ihres Betriebssystems, Einspielen von Patches, Antiviren-Software {etc.} betrifft, damit Schadsoftware auf diesen Kommunikationsendpunkten möglichst ausgeschlossen werden kann, {insb.} im Interesse der Finanztransaktionen dieser Kommunikationsteilnehmer.\\
+Hinsichtlich der Rechner der Bankangestellten gelten dieselben Sicherheitsmaßnahmen, wobei hier i.d.R. die Angestellten der IT-Abteilungen dafür Sorge tragen, dass die Rechner gesichert sind. Sorgfaltspflicht kommt aber auch den Mitarbeitern zu, wenn sie {bspw.} Laptops auch extern verwenden oder externe Hardware wie Kameras, USB-Sticks an die Rechner \textit{im Inneren} des IT-Netzes der Bank verwenden.
 Auch hier besteht ein Risiko, dass \textbf{Malware} in Form von \textbf{Viren} und \textbf{Trojanern} eingeschleust werden kann, die Teile oder das gesamte Netz der Bank kompromittieren können sowie \textbf{Hintertüren} und/oder \textbf{logische Bomben} in die IT-Systeme einschleusen.\\
 Durch das Kompromittieren der einzelnen Systeme können diese durchaus vollständig (unbemerkt) in die Hand eines Angreifers fallen.
 Durch den Einsatz von \textbf{Ransomware} kann hier ein großer (wirtschaftlicher) Schaden entstehen.
@@ -67,5 +65,5 @@ Durch den Einsatz von \textbf{Ransomware} kann hier ein großer (wirtschaftliche
 Die Maßnahmen, die zur Sicherung der Rechner der Bankangestellten gelten, gelten natürlich auch für die Webserver, wenn auch in einer anderen Größenordnung. Während den Rechnern der Bankangestellten eine gewisse Eigenverantwortung zukommt, müssen die Webserver durch die IT-Abteilungen gesichert sein. Hierzu spielt auch die Konfiguration und Pflege der \textbf{Firewalls} und \textbf{Proxies}/\textbf{Anwendungs-Gateways} eine große Rolle: Erweisen diese sich als Schwachpunkte, sind die Systeme entsprechenden Gefahren ausgesetzt, bspw. \textbf{Port-Scannern}, die nach auf den Servern laufenden Diensten suchen, bekannte Schwachstellen in entsprechender Software ausnutzen und sich dann mittels \textbf{Root-Kits}/\textbf{Hintertüren} in die Systeme einnisten.
 
 \subsection{Netzwerke (Internet und Intranet)}
-Da das gesamte System auf elektronischer Kommunikation basiert, sind alle elektronischen Kommunikationswegen (Kabel/Funk) Bedrohungen ausgesetzt, die sich durch Angriffe auf die Netz(end)knoten auszeichnen. Eine hohe Gefährdungslage zeichnet sich vor allem durch kompromittierte Hardware aus (s.o.), weshalb dieser besonderes Augenmerk gewidmet sein sollte.\\
+Da das gesamte System auf elektronischer Kommunikation basiert, sind alle elektronischen Kommunikationswege (Kabel/Funk) Bedrohungen ausgesetzt, die sich durch Angriffe auf die Netz(end)knoten auszeichnen. Eine hohe Gefährdungslage zeichnet sich vor allem durch kompromittierte Hardware aus (s.o.), weshalb dieser besonderes Augenmerk gewidmet sein sollte.\\
 Doch auch durch \textbf{Abhören und Manipulation} lassen sich entsprechende weitere Angriffe auf die Infrastruktur bzw. auf die Daten ausüben. Hierzu gehört u.a. \textbf{Session Hijacking}, \textbf{IP-Spoofing} sowie \textbf{Kryptografische Angriffe}, die allesamt das Ziel haben, die Rolle eines der beteiligten Kommunikationspartner einzunehmen und dadurch an sensible Informationen zu gelangen.
