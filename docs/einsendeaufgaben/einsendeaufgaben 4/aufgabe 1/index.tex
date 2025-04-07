@@ -52,6 +52,7 @@ Im Allgemeinen muss sichergestellt sein, dass die Kommunikation – vor allem be
 \section{Angriffsformen und Bedrohungen}
 
 Im Folgenden werden die einzelnen Architekturbausteine laut Aufgabenstellung gelistet und eine grobe Übersicht über Angriffsformen und Bedrohungen aufgelistet, denen diese ausgesetzt sind.
+Es wird sich zeigen, dass Angriffsformen durchaus bei den verschiedenen betrachteten Systemen mehrfach vorkommen und Deckungsgleich sind, wodurch sich auch eine Übereinstimmung bei der Bedrohungslage ergibt.
 
 \subsection{Rechner der Kunden / Rechner der Bankangestellten}
 
@@ -59,11 +60,46 @@ Kunden kommt eine besondere Sorgfaltspflicht bei der Pflege der eigenen Software
 Hinsichtlich der Rechner der Bankangestellten gelten dieselben Sicherheitsmaßnahmen, wobei hier i.d.R. die Angestellten der IT-Abteilungen dafür Sorge tragen, dass die Rechner gesichert sind. Sorgfaltspflicht kommt aber auch den Mitarbeitern zu, wenn sie {bspw.} Laptops auch extern verwenden oder externe Hardware wie Kameras, USB-Sticks an die Rechner \textit{im Inneren} des IT-Netzes der Bank verwenden.
 Auch hier besteht ein Risiko, dass \textbf{Malware} in Form von \textbf{Viren} und \textbf{Trojanern} eingeschleust werden kann, die Teile oder das gesamte Netz der Bank kompromittieren können sowie \textbf{Hintertüren} und/oder \textbf{logische Bomben} in die IT-Systeme einschleusen.\\
 Durch das Kompromittieren der einzelnen Systeme können diese durchaus vollständig (unbemerkt) in die Hand eines Angreifers fallen.
-Durch den Einsatz von \textbf{Ransomware} kann hier ein großer (wirtschaftlicher) Schaden entstehen.
+Durch den Einsatz von \textbf{Ransomware} kann hier ein großer (wirtschaftlicher) Schaden entstehen.\\
+
+
+\noindent
+\textbf{Bedrohungen}:
+\begin{itemize}
+    \itemsep0.5em
+    \item Authentizität / Verbindlichkeit: Session-Hijacking, (IP-)Spoofing, Kryptografische Angriffe
+    \item Vertraulichkeit: Kryptografische Angriffe
+    \item Integrität: Kryptografische Angriffe
+    \item Verfügbarkeit: Trojaner, Root-Kits, Hintertüren, Logische Bomben
+\end{itemize}
 
 \subsection{Server der Bank (Web- und Kontoserver)}
-Die Maßnahmen, die zur Sicherung der Rechner der Bankangestellten gelten, gelten natürlich auch für die Webserver, wenn auch in einer anderen Größenordnung. Während den Rechnern der Bankangestellten eine gewisse Eigenverantwortung zukommt, müssen die Webserver durch die IT-Abteilungen gesichert sein. Hierzu spielt auch die Konfiguration und Pflege der \textbf{Firewalls} und \textbf{Proxies}/\textbf{Anwendungs-Gateways} eine große Rolle: Erweisen diese sich als Schwachpunkte, sind die Systeme entsprechenden Gefahren ausgesetzt, bspw. \textbf{Port-Scannern}, die nach auf den Servern laufenden Diensten suchen, bekannte Schwachstellen in entsprechender Software ausnutzen und sich dann mittels \textbf{Root-Kits}/\textbf{Hintertüren} in die Systeme einnisten.
+Da davon ausgegangen werden kann, dass in einem IT-Systemhaus, dass für die Pflege und Wartung der Server verantwortlich ist, aufgrund der Sensibilität der beherbergten Daten (Kontoinformationen, Kontostände, persönliche Kundendaten) bauliche Maßnahmen getroffen wurden um Verfügbarkeit und Authentizität (Zugangskontrolle) zu garantieren, ist die elektronische Absicherung der Systeme in Form von Hard-/Software besonders wichtig.\\
+Die Maßnahmen, die zur Sicherung der Rechner der Bankangestellten gelten, gelten natürlich auch für die Webserver, wenn auch in einer anderen Größenordnung. Während den Rechnern der Bankangestellten eine gewisse Eigenverantwortung zukommt, müssen die Webserver durch die IT-Abteilungen gesichert sein. Hierzu spielt auch die Konfiguration und Pflege der \textbf{Firewalls} und \textbf{Proxies}/\textbf{Anwendungs-Gateways} eine große Rolle: Erweisen diese sich als Schwachpunkte, sind die Systeme entsprechenden Gefahren ausgesetzt, bspw. \textbf{Port-Scannern}, die nach auf den Servern laufenden Diensten suchen, bekannte Schwachstellen in entsprechender Software ausnutzen und sich dann mittels \textbf{Root-Kits}/\textbf{Hintertüren} in die Systeme einnisten.\\
+
+
+\noindent
+\textbf{Bedrohungen}:
+\begin{itemize}
+    \itemsep0.5em
+    \item Authentizität / Verbindlichkeit: Session-Hijacking, (IP-)Spoofing, Kryptografische Angriffe
+    \item Vertraulichkeit: Kryptografische Angriffe
+    \item Integrität: Kryptografische Angriffe
+    \item Verfügbarkeit: DDOS, Trojaner, Root-Kits, Hintertüren, Logische Bomben
+\end{itemize}
+
 
 \subsection{Netzwerke (Internet und Intranet)}
 Da das gesamte System auf elektronischer Kommunikation basiert, sind alle elektronischen Kommunikationswege (Kabel/Funk) Bedrohungen ausgesetzt, die sich durch Angriffe auf die Netz(end)knoten auszeichnen. Eine hohe Gefährdungslage zeichnet sich vor allem durch kompromittierte Hardware aus (s.o.), weshalb dieser besonderes Augenmerk gewidmet sein sollte.\\
-Doch auch durch \textbf{Abhören und Manipulation} lassen sich entsprechende weitere Angriffe auf die Infrastruktur bzw. auf die Daten ausüben. Hierzu gehört u.a. \textbf{Session Hijacking}, \textbf{IP-Spoofing} sowie \textbf{Kryptografische Angriffe}, die allesamt das Ziel haben, die Rolle eines der beteiligten Kommunikationspartner einzunehmen und dadurch an sensible Informationen zu gelangen.
+Doch auch durch \textbf{Abhören und Manipulation} lassen sich entsprechende weitere Angriffe auf die Infrastruktur bzw. auf die Daten ausüben. Hierzu gehört u.a. \textbf{Session Hijacking}, \textbf{IP-Spoofing} sowie \textbf{Kryptografische Angriffe}, die allesamt das Ziel haben, die Rolle eines der beteiligten Kommunikationspartner einzunehmen und dadurch an sensible Informationen zu gelangen.\\
+
+
+\noindent
+\textbf{Bedrohungen}:
+\begin{itemize}
+    \itemsep0.5em
+    \item Authentizität / Verbindlichkeit: Session-Hijacking, (IP-)Spoofing, Kryptografische Angriffe
+    \item Vertraulichkeit: Kryptografische Angriffe
+    \item Integrität: Kryptografische Angriffe
+    \item Verfügbarkeit: DDOS, Trojaner, Root-Kits, Hintertüren, Logische Bomben
+\end{itemize}
