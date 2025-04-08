@@ -9,12 +9,12 @@ Besonders hervorzuheben sind folgende Sicherheitsziele, wobei eine grobe Klassif
 
 \begin{itemize}
     \itemsep0.5em
-    \item \textbf{Vertraulichkeit} - vertrauliche Speicherung und Übermittlung von:
+    \item \textbf{Vertraulichkeit} – vertrauliche Speicherung und Übermittlung von:
     \begin{itemize}
         \item Bestellungen (Vertragsdaten)
         \item Adresse und Bankverbindungen (Kundendaten)
     \end{itemize}
-    \item \textbf{Integrität} - Schutz vor Manipulation
+    \item \textbf{Integrität} – Schutz vor Manipulation
     \begin{itemize}
         \item der Datenbanken/Webanwendung, die den Datenbestand des Online-Shops beinhalten/anzeigen (Betreiber)
         \item der getätigten Bestellungen (Betreiber)
@@ -31,7 +31,6 @@ Besonders hervorzuheben sind folgende Sicherheitsziele, wobei eine grobe Klassif
 
 Mit den angegebenen Sicherheitszielen sollen (nicht ausschließlich) die im Folgenden genannten Bedrohungen verhindert werden:
 
-
 \begin{itemize}
     \itemsep0.5em
     \item \textbf{Vertraulichkeit}
@@ -41,12 +40,12 @@ Mit den angegebenen Sicherheitszielen sollen (nicht ausschließlich) die im Folg
     \item \textbf{Integrität}
     \begin{itemize}
         \item Manipulation der \textit{Bestandsdaten} (Betreiber) durch Hintertüren, Malware, Social Engineering, \ldots
-        \item Manipulation der \textit{übertragenen Daten} durch Man-in-the-middle-Angriffe, Umleiten von Anfragen, IP-Spoofing
+        \item Manipulation der \textit{übertragenen Daten} durch Man-in-the-Middle-Angriffe, Umleiten von Anfragen, IP-Spoofing
     \end{itemize}
     \item \textbf{Authentizität / Verbindlichkeit}
     \begin{itemize}
         \item Tätigen von Bestellungen mit den Credentials authentisierter Nutzer / Nutzerdaten durch Dritte (User-Accounts, Kreditkarteninformationen)
-        \item Umleiten von Bestellungen an Adressen Dritter mit Zahlungs-/Kundendaten authentisierten Nutzer
+        \item Umleiten von Bestellungen an Adressen Dritter mit Zahlungs-/Kundendaten authentisierter Nutzer
         \item Umleiten von Transaktionen an Dritte
     \end{itemize}
 \end{itemize}
@@ -59,8 +58,8 @@ Es sind Schutzmaßnahmen zu treffen, die nicht nur \textit{präventiv} wirken, s
 
 \subsubsection*{IT-System Betreiber}
 
-Dem Betreiber wird empfohlen, zur Abwehr von Angriffen von Außen auf seine IT-Infrastruktur \textbf{Firewalls} in Form von \textbf{Paketfilter} und \textbf{Anwendungsproxies} einzusetzen, um sensible Daten durch maliziösen Internetverkehr abzuschirmen.\\
-Hierfür eignet sich das in Abbildung~\ref{fig:screened_subnet} skizzierte \textbf{Screened Subnet mit Proxy Server} (\cite[89 f.]{ITS4}), bei dem in einer \textit{demilitarisierten Zone} die Webserver  des Online-Händlers betrieben werden, die durch \textbf{Paketfilter} auf den externen ``Anfragebedarf`` abgestimmt werden.\\
+Dem Betreiber wird empfohlen, zur Abwehr von Angriffen von außen auf seine IT-Infrastruktur \textbf{Firewalls} in Form von \textbf{Paketfiltern} und \textbf{Anwendungsproxies} einzusetzen, um sensible Daten durch maliziösen Internetverkehr abzuschirmen.\\
+Hierfür eignet sich das in Abbildung~\ref{fig:screened_subnet} skizzierte \textbf{Screened Subnet mit Proxy Server} (\cite[89 f.]{ITS4}), bei dem in einer \textit{demilitarisierten Zone} die Webserver des Online-Händlers betrieben werden, die durch \textbf{Paketfilter} auf den externen „Anfragebedarf“ abgestimmt werden.\\
 
 \begin{figure}
     \centering
@@ -70,26 +69,26 @@ Hierfür eignet sich das in Abbildung~\ref{fig:screened_subnet} skizzierte \text
 \end{figure}
 
 \noindent
-Nachfolgend geschaltete Proxy-Server und Paketfilter schützen das \textbf{innere Netz} des Betreibers nicht nur durch maliziöse Anfragen des \textbf{externen Netzes}, sondern auch vor Kompromittierten Systemen des Zwischennetzes (DMZ) sowie auch des inneren Netzes, in dem Weitere sensible Daten lagern: Anwendungsdaten und Artikeldaten des Onlineshops, aber auch Geschäftsdaten und Personaldaten.\\
-Dem \textbf{innere Netz} muss dementsprechend Aufmerksamkeit zuteil werden, (Hardware-)Systeme müssen durch entsprechende Zugriffs- und Zugangskontrollen geschützt werden, Security-Policies müssen auf den Schutzbedarf der einzelnen Daten, die gespeichert bzw. über interne Telekommunikationsleitungen übertragen werden, geschützt werden.\\
-Aus dem Schutzbedarf dieser Daten leitet sich dann ebenfalls das umzusetzende Sicherheitsniveau für das interne Netz ab, welches im gleichen Maße zu berücksichtigen ist, um ein insg. hohes Sicherheitsniveau zu erreichen.\\
-Die angesprochenen \textbf{detektiven} Maßnahmen realisiert der Betreiber über spezielle (gesicherte) Loggingverfahren, die  \textbf{Intrusion Detection Systeme} unterstützen bzw. nachträglich bei evtl. forensischen Maßnahmen der Beweissicherung dienen, und aus denen weitere präventive Maßnahmen abgeleitet werden können.
+Nachfolgend geschaltete Proxy-Server und Paketfilter schützen das \textbf{innere Netz} des Betreibers nicht nur vor maliziösen Anfragen des \textbf{externen Netzes}, sondern auch vor kompromittierten Systemen des Zwischennetzes (DMZ) sowie auch des inneren Netzes, in dem weitere sensible Daten lagern: Anwendungsdaten und Artikeldaten des Onlineshops, aber auch Geschäftsdaten und Personaldaten.\\
+Dem \textbf{inneren Netz} muss dementsprechend Aufmerksamkeit zuteilwerden, (Hardware-)Systeme müssen durch entsprechende Zugriffs- und Zugangskontrollen geschützt werden, Security-Policies müssen auf den Schutzbedarf der einzelnen Daten, die gespeichert bzw. über interne Telekommunikationsleitungen übertragen werden, abgestimmt werden.\\
+Aus dem Schutzbedarf dieser Daten leitet sich dann ebenfalls das umzusetzende Sicherheitsniveau für das interne Netz ab, welches im gleichen Maße zu berücksichtigen ist, um ein insgesamt hohes Sicherheitsniveau zu erreichen.\\
+Die angesprochenen \textbf{detektiven} Maßnahmen realisiert der Betreiber über spezielle (gesicherte) Loggingverfahren, die \textbf{Intrusion Detection Systeme} unterstützen bzw. nachträglich bei evtl. forensischen Maßnahmen der Beweissicherung dienen und aus denen weitere präventive Maßnahmen abgeleitet werden können.
 
 \noindent
-Sollten Mitarbeiter bzw. die Geschäftsleitung von Außen auf das innere Netz zugreifen müssen, ist der Einsatz von VPN dringend anzuraten. Beonders zu berücksichtigen ist die Tatsache, dass im inneren Netz auch die Datenbanken liegen, hier müssen also entsprechende Sicherheitsmaßnahmen zur Absicherung der KOmmunikation getroiffen werden.\\
-Hierbei kann das VPN-Gateway innerhalb der DMZ liegen, oder es kann eine gesonderte DMZ nur für diesen Zweck aufgebaut werden, was möglicherweise die Sicherheit erhöht, gleichzeitig aber auch die \textbf{Komplexität} und den \textbf{Konfigurationsaufwand}.
-Mitarbeiter müssen der im inneren Netz vorherrschenden Security Policy entsprechend geschult und bzgl. der möglichen Gefahren und Bedrohungen hin sensibilisiert werden.\\
+Sollten Mitarbeiter bzw. die Geschäftsleitung von außen auf das innere Netz zugreifen müssen, ist der Einsatz von VPN dringend anzuraten. Besonders zu berücksichtigen ist die Tatsache, dass im inneren Netz auch die Datenbanken liegen – hier müssen also entsprechende Sicherheitsmaßnahmen zur Absicherung der Kommunikation getroffen werden.\\
+Hierbei kann das VPN-Gateway innerhalb der DMZ liegen, oder es kann eine gesonderte DMZ nur für diesen Zweck aufgebaut werden, was möglicherweise die Sicherheit erhöht, gleichzeitig aber auch die \textbf{Komplexität} und den \textbf{Konfigurationsaufwand}.\\
+Mitarbeiter müssen der im inneren Netz vorherrschenden Security Policy entsprechend geschult und bezüglich der möglichen Gefahren und Bedrohungen hin sensibilisiert werden.
 
 \noindent
-Der Betreiber muss überdies für die Identität seiner Server Sorge tragen, die mit Hilfe Dritter (\textit{Zertifizierungsstellen}, \textit{Trusted Authorities}) realisiert wird: Zusammen mit auf den Webservern installierten Software-Komponenten zur Verschlüsselung des Datenverkehrs (\textbf{HTTPS} mittels \textit{TLS}) wird die \textbf{Verschlüsselung} und \textbf{Signatur} der übertragenen Daten gewährleistet, wodurch die Sicherheitsziele \textbf{Vertraulichkeit} und \textbf{Verbindlichkeit} der Kommunikation sichergestellt wird.\\
+Der Betreiber muss überdies für die Identität seiner Server Sorge tragen, die mit Hilfe Dritter (\textit{Zertifizierungsstellen}, \textit{Trusted Authorities}) realisiert wird: Zusammen mit auf den Webservern installierten Software-Komponenten zur Verschlüsselung des Datenverkehrs (\textbf{HTTPS} mittels \textit{TLS}) wird die \textbf{Verschlüsselung} und \textbf{Signatur} der übertragenen Daten gewährleistet, wodurch die Sicherheitsziele \textbf{Vertraulichkeit} und \textbf{Verbindlichkeit} der Kommunikation sichergestellt werden.\\
 
 \noindent
 Das Abschicken von Bestellungen sollte ausschließlich über die Webanwendung erfolgen können.
-Durch den Einsatz kryptografischer Maßnahmen wie HMAC und Signaturen unterstützt dies die Sicherstellung der Authentizität, aber auch Anwender erhalten durch entsprechend signierte Email-Antworten inkl. Rechnungen eine \textbf{verbindliche Auftragsbestätigung}.\\
+Durch den Einsatz kryptografischer Maßnahmen wie HMAC und Signaturen unterstützt dies die Sicherstellung der Authentizität, aber auch Anwender erhalten durch entsprechend signierte E-Mail-Antworten inkl. Rechnungen eine \textbf{verbindliche Auftragsbestätigung}.\\
 
 \noindent
 Zur Sicherstellung der Authentizität der Benutzer sind gesonderte Verfahren notwendig, wie bspw. Verifikation der eingegebenen Adressen bis hin zur Online-PIN bzw. Video-Ident-Verfahren. Diese müssen bereits bei der Anmeldung der Nutzer mit eingeplant werden.\\
-Zusätzlich sollte der Betreiber dafür Sorge tragen, dass die Kreditkarteninformation gesichert auf seinen Servern gespeichert werden, beispielsweise unter Berücksichtigung des PCI-DSS (\textit{Payment Card Security Standard}, s.~\cite[57 ff.]{ITS1}).\\
+Zusätzlich sollte der Betreiber dafür Sorge tragen, dass die Kreditkarteninformation gesichert auf seinen Servern gespeichert wird, beispielsweise unter Berücksichtigung des PCI-DSS (\textit{Payment Card Security Standard}, s.~\cite[57 ff.]{ITS1}).\\
 Je nach Aufwand und Verhältnismäßigkeit bietet sich ein Auslagern des Zahlungsverkehrs an spezialisierte Dienstleister an bzw. die Einbettung von Verifikationsverfahren der zugehörigen Kreditsinstitute.\\
 
 \noindent
@@ -98,17 +97,16 @@ Diese Maßnahmen sind auf Anwendungsebene zu treffen.
 
 \subsection{Ablauf einer Bestellung}
 
-
 \begin{itemize}
     \itemsep0.5em
-    \item Öffnen der Webseite des Betreibers über gesicherte Verbdindung (HTTPS), Abgleich von Zertifikatsinformationen des Webservers mit der ausstellenden Zertifizieungsstelle, Abgleich öffentlicher / privater Schlüssel, Verifikation durch Webbrowser Nutzer / den Nutzer selber (wird in den weiteren Schritten bei der Kommunikation mit den Webservern/-diensten des Betreibers implizit vorausgesetzt)
+    \item Öffnen der Webseite des Betreibers über gesicherte Verbindung (HTTPS), Abgleich von Zertifikatsinformationen des Webservers mit der ausstellenden Zertifizierungsstelle, Abgleich öffentlicher / privater Schlüssel, Verifikation durch Webbrowser / den Nutzer selbst (wird in den weiteren Schritten bei der Kommunikation mit den Webservern/-diensten des Betreibers implizit vorausgesetzt)
     \item \textit{Neuer Nutzer}
     \begin{itemize}
-        \item Registrierung des Nutzers über Online-Formular, Angabe von Adresse, MFA-Verfahren, ggf. Telefonnummer. Abgleich der Daten durch die Anwendung, ggfl. Abgleich Adressdatenbanken, White-/Blacklists Email-Adresse, Nutzername usw., Absenden Bestätigungsemail
-        \item verifikation der Anmeldung durch den Nutzer (Double-Opt-In)
+        \item Registrierung des Nutzers über Online-Formular, Angabe von Adresse, MFA-Verfahren, ggf. Telefonnummer. Abgleich der Daten durch die Anwendung, ggf. Abgleich mit Adressdatenbanken, White-/Blacklists für E-Mail-Adresse, Nutzername usw., Absenden Bestätigungs-E-Mail
+        \item Verifikation der Anmeldung durch den Nutzer (Double-Opt-In)
     \end{itemize}
     \item Anmeldung des Nutzers über Loginformular der Webseite, Bestätigung der Identität über MFA; Sitzung gesichert auf Anwendungsebene über verschlüsselte Tokens zur weiteren Kommunikation mit den Online-Diensten
-    \item Auswahl der Artikel im Katalog des Händlers, Speicherung der ausgewählten Artikel im Warenkorb, Einleiten Bezahlvorgang
-    \item Angabe der Zahlungsdaten, Auswahl nach Vorgabe des Betreibers. GGf. Möglichkeit zur Auswahl externer Dienstleister, optional speichern der Zahlart für nachfolgende Bestellvorgänge zur Vereinfachung des Bestellvorgangs. Abgleich der Daten durch externen Dienstleister und / oder Kreditsinstitute über gesicherte Verbindung, kryptografische Maßnahmen ähnlich zu dem beschriebenen System (Integrität / Authentizität Client - Server)
-    \item Nach erfolgreicher Bestellung: Zusicherung der Verbindlichkeit der Bestellung durch Bestellbestätigung und Auftragseingang Online-Händler, Email entsprechend der Zertifizierungsmaßnahmen signiert und gehasht mit den privaten Schlüssel des Betreibers, Überprüfung durch Anwender/seinen Anwendungsprogrammen anhand des öffentlichen Schlüssel des Betreibers.
+    \item Auswahl der Artikel im Katalog des Händlers, Speicherung der ausgewählten Artikel im Warenkorb, Einleiten des Bezahlvorgangs
+    \item Angabe der Zahlungsdaten, Auswahl nach Vorgabe des Betreibers. Ggf. Möglichkeit zur Auswahl externer Dienstleister, optional Speichern der Zahlart für nachfolgende Bestellvorgänge zur Vereinfachung. Abgleich der Daten durch externen Dienstleister und / oder Kreditsinstitute über gesicherte Verbindung, kryptografische Maßnahmen analog zu dem beschriebenen System (Integrität / Authentizität Client - Server)
+    \item Nach erfolgreicher Bestellung: Zusicherung der Verbindlichkeit der Bestellung durch Bestellbestätigung und Auftragseingang Online-Händler, E-Mail entsprechend der Zertifizierungsmaßnahmen signiert und gehasht mit dem privaten Schlüssel des Betreibers, Überprüfung durch Anwender/seine Anwendungsprogramme anhand des öffentlichen Schlüssels des Betreibers.
 \end{itemize}
