@@ -1,5 +1,13 @@
 \chapter{Aufgabe 5}
 
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.6]{aufgabe 5/img/xkcd221}
+    \caption{(Quelle: \url{https://xkcd.com/221/})}
+    \label{fig:xkcd221}
+\end{figure}
+
+
 \section{a)}
 
 \textit{Wir betrachten den Pseudozufallsgenerator $x_{i+1} = (a \cdot x_i + b) \ \text{MOD}\ m$ mit Modul
@@ -12,6 +20,9 @@ Wir suchen $d$, für das
 \begin{equation}\notag
     f^{d+1}(x) = f^i(x), \forall i \geq 0 \qquad{\text{(keine Vorperiode vorhanden)}}
 \end{equation}
+
+\noindent
+ist.\\
 
 \noindent
 \textit{Horster und Schartner} weisen in~\cite[83]{ITS3} auf 3 Bedingungen hin, unter deren EInhaltung eine maximale Periodenlänge $d=m$ garantiert werden kann.
@@ -38,7 +49,7 @@ Dies ist gleichzeitig der einzige Wert, den wir unter o.a. Bedingungen wählen k
 
 \noindent
 Wir suchen nun nach einem $b$, für das $gcd(b, 24) = 1$ gilt.
-Wir können demnach einen Wert aus $\{5, 7, 11, 13, 17, 19, 21, 23\}$ für $b$ auswählen.
+Wir können demnach einen Wert aus $\{1, 5, 7, 11, 13, 17, 19, 21, 23\}$ für $b$ auswählen.
 
 \noindent
 Damit folgt insgesamt: Für die Werte $a = 13$ und $b \in \{1, 5, 7, 11, 13, 17, 19, 21, 23\}$ wird die maximale Periodenlänge erreicht.
