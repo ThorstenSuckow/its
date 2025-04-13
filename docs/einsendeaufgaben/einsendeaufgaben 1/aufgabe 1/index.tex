@@ -14,69 +14,66 @@ Ist Vertraulichkeit bei dem Austausch von Daten garantiert, können teilnehmende
 
 \noindent
 Mechanismen, die das Sicherheitsziel \textit{Vertraulichkeit} adressieren, sind bspw. \textbf{symmetrische} oder - besser noch - \textbf{asymmetrische Verschlüsselung} der Daten\footnote{
-Findet die Übertragung nicht auf elektronischem Wege statt, können \textbf{bauliche Maßnahmen} (wie bspw. abhörsichere Räume) Vertraulichkeit garantieren.
+    Findet die Übertragung nicht auf elektronischem Wege statt, können \textbf{bauliche Maßnahmen} (wie bspw. abhörsichere Räume) Vertraulichkeit garantieren.
 }
 
 \subsection*{Integrität (Integrity)}
 Unter \textbf{Integrität} versteht man das Sicherheitsziel der Unversehrtheit und Originalität der Daten.
-Wird das Sicherheitsziel erfüllt, können an dem Datenaustausch beteiligte Benutzer davon ausgehen, dass die Daten auf dem Übertragungsweg nicht geändert worden sind, und falls ja, dass diese Änderung, die ja durchaus auch technischer Natur sein kann (Signalstörungen/-verlust bei der Übertragung) entdeckt wird, so dass Daten neu angefragt werden können.
+Wird das Sicherheitsziel erfüllt, können an dem Datenaustausch beteiligte Benutzer davon ausgehen, dass die Daten auf dem Übertragungsweg nicht geändert worden sind, und falls ja, dass diese Änderung, die ja durchaus auch technischer Natur sein kann (Signalstörungen/-verlust bei der Übertragung) entdeckt wird, sodass Daten neu angefragt werden können.
 
 \noindent
-Mechanismen, die das Schutzziel \textit{Integrität} unterstützen, sind bspw. \textpt{Prüfsummen}, die aus den zu übertragenen Daten berechnet werden, und die der Empfänger mit der erhaltenen Nachricht vergleichen kann.
+Mechanismen, die das Schutzziel \textit{Integrität} unterstützen, sind bspw. \textbf{Prüfsummen}, die aus den zu übertragenden Daten berechnet werden, und die der Empfänger mit der erhaltenen Nachricht vergleichen kann.
 Integrität kann bspw. auch durch digitale Signaturen erreicht werden, wodurch auch gleichzeitig \textbf{Authentizität} sichergestellt werden kann.
 
 \subsection*{Authentizität (Authenticity)}
 Unter \textbf{Authentizität} versteht man, dass eine Nachricht nicht abgeändert worden ist (bspw. durch den Empfänger), und die Daten somit eindeutig einem Benutzer zugeordnet werden können. Hierdurch soll auch die \textit{Nichtabstreitbarkeit} der übermittelten Daten garantiert werden.
 
 \noindent
-Mechanismen, die das Sicherheit ziel ``Authentizität`` unterstützen, sind digitale Signaturen, oder auch \textit{MAC} (\textit{Message Authentication Code}), also schlüsselabhängige Hashverfahren (vgl.~\cite{Sch15})\footnote{
-In einem weiteren Rahmen kann man das 4-Augen-Gespräch, ggf. auch unter zuhilfenahme von Video-Kommunikation, als unterstützenden Mechanismus verstehen.}
+Mechanismen, die das Schutzziel ``Authentizität`` unterstützen, sind digitale Signaturen oder auch \textit{MAC} (\textit{Message Authentication Code}), also schlüsselabhängige Hashverfahren (vgl.~\cite{Sch15})\footnote{
+    In einem weiteren Rahmen kann man das 4-Augen-Gespräch, ggf. auch unter Zuhilfenahme von Video-Kommunikation, als unterstützenden Mechanismus verstehen.}
 
 \subsection*{Verfügbarkeit (Availability)}
 Das Sicherheitsziel \textbf{Verfügbarkeit} beschreibt die (möglichst) ununterbrochene Verfügbarkeit von Daten, was bspw. im Bereich \textit{Kritischer Infrastruktur} bzw. bei Behörden und Unternehmen großen öffentlichen Interesses eine wichtige Rolle spielt.\\
-Hierbei müssen mitunter wirtschaftlich relevante Daten oder personenbezogene Daten (bspw. Gesundheitsdaten) stets zur Verfügung stehen, um enstprechend wirtschaftlichen oder persönlichen Schaden abzuwenden.\footnote{
-Den bereits in einer vorhergehenden Fußnote erwähnten \textbf{baulichen Maßnahmen} kommen in Verbindung mit Schutzkonzepten zur Erreichung des Sicherheitsziels ``Verfügbarkeit`` eine weitaus wichtigere Rolle zu, da auch \textit{höherer Gewalt} (Brände, Erdbeben, Überflutungen \ldots) aber auch Einbruch und Diebstahl (physischer Datenträger) Rechnung getragen werden muss.
+Hierbei müssen mitunter wirtschaftlich relevante Daten oder personenbezogene Daten (bspw. Gesundheitsdaten) stets zur Verfügung stehen, um entsprechenden wirtschaftlichen oder persönlichen Schaden abzuwenden.\footnote{
+    Den bereits in einer vorhergehenden Fußnote erwähnten \textbf{baulichen Maßnahmen} kommt in Verbindung mit Schutzkonzepten zur Erreichung des Sicherheitsziels ``Verfügbarkeit`` eine weitaus wichtigere Rolle zu, da auch \textit{höherer Gewalt} (Brände, Erdbeben, Überflutungen \ldots), aber auch Einbruch und Diebstahl (physischer Datenträger) Rechnung getragen werden muss.
 }
 
 \noindent
-``Verfügbarkeit`` wird i.d.R. durch Sicherungskonzepte (Firewalls, Intrusion Detection Systeme), Redundanz (sowohl hinsichtlich technischer Infrastruktur als auch Datenhaltung) sowie geeigneter Notfallvorsorge (Datensicherung/-backups) sichergestellt.
-\textit{Schartner et al.} weisen in~\cite[\textbf{Tab. 3.1}, 24]{ITS1} außerdem noch auf einen \textbf{Zugriffsschutz} hin, der durch entsprechende Maßnahmen wie verschlüsselte Datenübertragung, Passwortschutz der entsprechenden Systeme, Entkoppelung der Systeme in nicht öffentlich Bereiche (``Air Gap``, vgl.~\cite{RFC4949}), \ldots unterstützt werden kann.
+``Verfügbarkeit`` wird i.d.R. durch Sicherungskonzepte (Firewalls, Intrusion Detection Systeme), Redundanz (sowohl hinsichtlich technischer Infrastruktur als auch Datenhaltung) sowie geeignete Notfallvorsorge (Datensicherungen/-Backups) sichergestellt.
+\textit{Schartner et al.} weisen in~\cite[\textbf{Tab. 3.1}, 24]{ITS1} außerdem noch auf einen \textbf{Zugriffsschutz} hin, der durch entsprechende Maßnahmen wie verschlüsselte Datenübertragung, Passwortschutz der entsprechenden Systeme, Entkoppelung der Systeme in nicht öffentliche Bereiche (``Air Gap``, vgl.~\cite{RFC4949}) \ldots unterstützt werden kann.
 
 \section{b)}
 
 \noindent
 \textit{Im Kapitel 3.2 der Kurseinheit ``Systemsicherheit`` haben Sie prinzipielle Angriffsformen kennengelernt (siehe Abbildung 3.2).
-Welcher der von Ihnen genannten Mechanismen kann welche Angriffsform erkennen bzw. vorbeugen?
-}
+Welcher der von Ihnen genannten Mechanismen kann welche Angriffsform erkennen bzw. vorbeugen?}
 
 \subsection*{Ausschleusen}
 \begin{itemize}
     \itemsep0.5em
-    \item \textbf{Entkoppelung}: Sind die Systeme möglichst von unerlaubtem Zugriff geschützt, können Daten nur unter erheblichem Aufwand ausgeschleust werden
-    \item Zugangskontrollen / Zugriffskontrollen (u.a. durch Authentifizierungsmaßnahmen, auch baulicher Natur) können unerlaubtem Zugriff entgegenwirken und somit ein Ausschleusen der Daten verhindern
+    \item \textbf{Entkoppelung}: Sind die Systeme möglichst von unerlaubtem Zugriff geschützt, können Daten nur unter erheblichem Aufwand ausgeschleust werden.
+    \item Zugangskontrollen / Zugriffskontrollen (u.a. durch Authentifizierungsmaßnahmen, auch baulicher Natur) können unerlaubtem Zugriff entgegenwirken und somit ein Ausschleusen der Daten verhindern.
 \end{itemize}
 
 \subsection*{Erzeugen}
 \begin{itemize}
     \itemsep0.5em
-    \item {MAC}: Die Urheberschaft kann mithilfe des \textit{Message Authentication Codes} nachgewiesen werden, für den sowohl Sender als auch Empfänger den Schlüssel besitzen: Hat der Angreifer den Schlüssel nicht, kann er auch keine entsprechende Nachricht erstellen
-    \item {Digitale Signaturen}: wird eine digitale Signatur verwendet, kann der öffentliche Schlüssel zur Verifikation der erstellten Nachricht und zur Zuordnung zu einem eindeutigen Urheber (= Besitzer öffentlichen / privaten Schlüssels) genutzt werden
+    \item {MAC}: Die Urheberschaft kann mithilfe des \textit{Message Authentication Codes} nachgewiesen werden, für den sowohl Sender als auch Empfänger den Schlüssel besitzen: Hat der Angreifer den Schlüssel nicht, kann er auch keine entsprechende Nachricht erstellen.
+    \item {Digitale Signaturen}: Wird eine digitale Signatur verwendet, kann der öffentliche Schlüssel zur Verifikation der erstellten Nachricht und zur Zuordnung zu einem eindeutigen Urheber (= Besitzer öffentlichen / privaten Schlüssels) genutzt werden.
 \end{itemize}
-
 
 \subsection*{Modifizieren}
 \begin{itemize}
     \itemsep0.5em
-    \item {Hashverfahren}: ermöglicht Prüfsummenvergleich von Daten
-    \item {MAC}: wie \textit{Hashverfahren}, durch Schlüsselabhängigkeit auch noch Schutz gegen den Angriff \textit{Erzeugen}
-    \item {Digitale Signaturen}: wird eine digitale Signatur verwendet, kann eine Modifikation der Daten entdeckt werden (vgl.~\cite[382]{Eck18})
+    \item {Hashverfahren}: Ermöglicht Prüfsummenvergleich von Daten.
+    \item {MAC}: Wie \textit{Hashverfahren}, durch Schlüsselabhängigkeit auch noch Schutz gegen den Angriff \textit{Erzeugen}.
+    \item {Digitale Signaturen}: Wird eine digitale Signatur verwendet, kann eine Modifikation der Daten entdeckt werden (vgl.~\cite[382]{Eck18}).
 \end{itemize}
-
 
 \subsection*{Unterbrechen}
 \begin{itemize}
     \itemsep0.5em
-    \item \textbf{Redundanz}: Redundante Datenleitungen sorgen dafür, dass der Ausfall einer Leitung nicht die Verfügbarkeit der Daten gefährdet
+    \item \textbf{Redundanz}: Redundante Datenleitungen sorgen dafür, dass der Ausfall einer Leitung nicht die Verfügbarkeit der Daten gefährdet.
 \end{itemize}
 
 \section{c)}
@@ -86,37 +83,36 @@ Betrachten Sie dabei jede Sicherheitsanforderung separat und losgelöst von den
 anderen.}\\
 
 \noindent
-Auch, wenn ein Angreifer nur verschlüsselte Daten erhält, lassen sich mittels der gewonnenen Metadaten der Kommunikation, also Absender und Empfänger, Datum und Uhrzeit sowie Frequenz des Datenaustausches sowie ggf. Lokalität der Kommunikationsteilnehmer Informationen ableiten (vgl.~\cite[25 f.]{Sch15b}). \\
+Auch wenn ein Angreifer nur verschlüsselte Daten erhält, lassen sich mittels der gewonnenen Metadaten der Kommunikation - also Absender und Empfänger, Datum und Uhrzeit sowie Frequenz des Datenaustauschs sowie ggf. Lokalität der Kommunikationsteilnehmer - Informationen ableiten (vgl.~\cite[25 f.]{Sch15b}).\\
 Diese Art der Metadatengewinnung gilt grundsätzlich für alle Sicherheitsziele - es unterscheiden sich entsprechend die gewonnenen Informationen.\\
-Für die Verfahren, bei denen Verschlüsselung eingesetzt wird, kann generell - insb. beim Datenaustausch per Email oder andere elektonische Dienste - Absender / Empfänger ermittelt werden (ggf. Identitäten) und das eingesetzte Verschlüsselungsverfahren anhand von Mustererkennung.\\
+Für die Verfahren, bei denen Verschlüsselung eingesetzt wird, kann generell - insb. beim Datenaustausch per E-Mail oder anderen elektronischen Diensten - Absender / Empfänger ermittelt werden (ggf. Identitäten) und das eingesetzte Verschlüsselungsverfahren anhand von Mustererkennung.\\
 Ausstellende Zertifizierungsstellen können anhand verwendeter Zertifikate ermittelt werden.
 
 \subsection*{Vertraulichkeit}
 \begin{itemize}
-    \itemsep0.5
-    \item wie ist verschlüsselt?
+    \itemsep0.5em
+    \item Wie ist verschlüsselt?
 \end{itemize}
 
 \subsection*{Integrität}
 \begin{itemize}
-    \itemsep0.5
-    \item werden Hashverfahren/MACs genutzt?
+    \itemsep0.5em
+    \item Werden Hashverfahren/MACs genutzt?
 \end{itemize}
 
 \subsection*{Authentizität}
 \begin{itemize}
-    \itemsep0.5
-    \item wer ist an der Kommunikation beteiligt (Zertifikate)?
+    \itemsep0.5em
+    \item Wer ist an der Kommunikation beteiligt (Zertifikate)?
 \end{itemize}
 
 \subsection*{Verfügbarkeit}
 \begin{itemize}
-    \itemsep0.5
+    \itemsep0.5em
     \item Netzwerk-/Infrastruktur
     \item Kommunikationsverhalten beteiligter Systeme (uni-/bidirektionales Senden)
-    \item Typen abgesendeter Nachrichten und Responses (POST Nachrichten zu Auth-Services, Redirects zu anderen Diensten usw. )
+    \item Typen abgesendeter Nachrichten und Responses (POST-Nachrichten zu Auth-Services, Redirects zu anderen Diensten usw.)
 \end{itemize}
-
 
 \section{d)}
 
@@ -124,27 +120,27 @@ Ausstellende Zertifizierungsstellen können anhand verwendeter Zertifikate ermit
 mechanismen. Welche der von Ihnen genannten Mechanismen sind präventiv, welche detektiv und welche erfüllen beide Eigenschaften?}\\
 
 \subsection*{Präventive Maßnahmen}
-Maßnahmen, die vorbeugend zur Erreichung der Sicherheitsziele durchgeführt werden. Dazu gehören u.a.
+Maßnahmen, die vorbeugend zur Erreichung der Sicherheitsziele durchgeführt werden. Dazu gehören u.a.:
 
 \begin{itemize}
     \itemsep0.5em
-    \item \textbf{Kryptografische Maßnahmen} i.A., um Spionage/ Angriffe zu erschweren
-    \item \textbf{Notfallvorsorge} um Daten im Notfall schnell wieder zur Verfügung stellen zu können
-    \item \textbf{bauliche Maßnahmen} um höherer Gewalt in angemessenem Rahmen vorzubeugen
-    \item \textbf{Schlüsselaustausch} über einen sicheren Kommunikationsweg bei MAC / symmetrischer Verschlüsselung
-    \item \textbf{Sichern der Schlüsselinfrastruktur} um der Kompromittierung von privaten Schlüsseln vorzubeugen bzw. schnell darauf reagieren zu können
+    \item \textbf{Kryptografische Maßnahmen} i.A., um Spionage/Angriffe zu erschweren
+    \item \textbf{Notfallvorsorge}, um Daten im Notfall schnell wieder zur Verfügung stellen zu können
+    \item \textbf{Bauliche Maßnahmen}, um höherer Gewalt in angemessenem Rahmen vorzubeugen
+    \item \textbf{Schlüsselaustausch} über einen sicheren Kommunikationsweg bei MAC/symmetrischer Verschlüsselung
+    \item \textbf{Sichern der Schlüsselinfrastruktur}, um der Kompromittierung von privaten Schlüsseln vorzubeugen bzw. schnell darauf reagieren zu können
     \item \textbf{Härten der Netzwerkstruktur} durch Firewalls und Intrusion Prevention Systeme
 \end{itemize}
 
 \subsection*{Detektive Maßnahmen}
 
-Maßnahmen, die bei Verletzung eines Sicherheitsziels durchgeführt werden, um Ursache zu ermitteln, und weitere präventive Schutzmaßnahmen abzuleiten.
+Maßnahmen, die bei Verletzung eines Sicherheitsziels durchgeführt werden, um Ursachen zu ermitteln und weitere präventive Schutzmaßnahmen abzuleiten.
 
 \begin{itemize}
-    \itemsep0.5
+    \itemsep0.5em
     \item \textbf{Prüfsummenverfahren} bzw. \textbf{MACs}, um Modifikation von Daten ermitteln zu können
     \item \textbf{Intrusion Detection Systeme} bzw. gehärtete Netzwerkstruktur mit Logs über alle Aktivitäten geben Auskunft zu Angriffen/Angriffszielen
 \end{itemize}
 
 \noindent
-Die \textbf{Prüfsummenverfahren} zusammen mit den \textbf{MACs} können zu den präventiven und detektiven Maßnahmen gezählt werden, als auch die Protokollierung und das Logging im Netzwerk.
+Die \textbf{Prüfsummenverfahren} zusammen mit den \textbf{MACs} können sowohl zu den präventiven als auch den detektiven Maßnahmen gezählt werden, ebenso wie die Protokollierung und das Logging im Netzwerk.
