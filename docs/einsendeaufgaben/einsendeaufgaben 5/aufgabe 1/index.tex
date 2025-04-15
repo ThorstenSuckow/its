@@ -30,7 +30,7 @@ Es erfolgt eine allgemeine Beschreibung von Chipkarten und der darin verwendeten
 \begin{figure}
     \centering
     \includegraphics[scale=0.4]{aufgabe 1/img/chipkarte.svg}
-    \caption{Skizzenhafte Darstellung einer kontaktbehafteten Chipkarte und möglicher Komponenten. (Quelle: in Anlehnung an~\cite[\textbf{Abb. 2.1}, 9 sowie \textbf{Abb. 2.2}, 10]{ITS5})}
+    \caption{Skizzenhafte Darstellung einer kontaktbehafteten Chipkarte (Vorderseite oben, Rückseite unten) und möglicher Komponenten. (Quelle: in Anlehnung an~\cite[\textbf{Abb. 2.1}, 9 sowie \textbf{Abb. 2.2}, 10]{ITS5})}
     \label{fig:chipkarte}
 \end{figure}
 
@@ -93,4 +93,81 @@ Der Ablauf ist skizzenhaft in Abbildung~\ref{fig:apdu} dargestellt.
     \includegraphics[scale=0.4]{aufgabe 1/img/apdu.svg}
     \caption{Skizzenhafte Darstellung der Kommunikation zwischen Termin und Karte. Nicht dargestellt ist hier die weitere Aushandlung von protokollspezifischen Parametern, \textit{PPS} (\textit{Protocol Parameter Selection}) genannt, was nach dem \texttt{ATR} geschehen kann. (Quelle: in Anlehnung an~\cite[\textbf{Bild 6.1}, 378]{RF02})}
     \label{fig:apdu}
+\end{figure}
+
+
+\section{e)}
+
+\textit{Beschreiben Sie den Aufbau von Command‐ und Response‐APDUs und nennen
+Sie jeweils ein Beispiel für die vier möglichen Kombinationen aus Command‐
+und Response‐APDU (Case 1 bis Case 4).}\\
+
+
+\noindent
+Der Aufbau von Command- und Response-APDU ist jeweils in Abbildung~\ref{fig:capdu} und~\ref{fig:rapdu} dargestellt.\\
+Es folgt eine kurze Beschreibung der einzelnen Felder der Nachrichtenpakete (vgl. i.F.~\cite[23 ff.]{ITS5} sowie~\cite[430 ff.]{RF02}).
+
+\subsection*{Command APDU}
+
+Eine Command APDU besteht aus folgenden Feldern (s. Abbildung~\ref{fig:capdu}):
+
+\begin{itemize}
+    \itemsep0.5em
+    \item \texttt{CLA} (\textit{Class-Byte}): Kennzeichnet Anwendungen und ihren Befehlssatz (ISO-Anwendungen bspw. gekennzeichnet durch \code{0X}\footnote{
+    In dieser Schreibweise entspricht $0$ dem msb, $X$ eine beliebige Anordnung niederwertiger Bits.
+    }
+    \item \texttt{INS} (\textit{Instruction-Byte}): Eigentlicher Befehl
+    \item \texttt{P1}/ \texttt{P2}: \textit{Parameter-Bytes}, die \textt{INS} näher beschreiben
+    \item \texttt{Lc} (\textit{Length Command}): Länge des gesendeten Datenfelds \texttt{cData}
+    \item \texttt{cData}: Nutzdaten (kann leer sein)
+    \item \texttt{Le} (\textit{Length expected}): Erwartete Länge des Datenteils der Response
+ \end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{aufgabe 1/img/capdu.svg}
+    \caption{Struktur einer Command APDU. (Quelle: in Anlehnung an~\cite[\textbf{Abb 2.5}, 23]{ITS5})}
+    \label{fig:capdu}
+\end{figure}
+
+
+\subsection*{Response APDU}
+
+Da die Protokollarchitektur dem \textit{Leader-Follower-Prinzip} entspricht, gehen die Commands immer vom Terminal aus - jeder Command muss von der Karte über eine Response APDU beantwortet werden, weshalb eine Zuordnung \textit{Nachricht $\rightarrow$ Antwort} synchron erfolgt und keine weiteren Header-Informationen von dem Client aus benötigt wird, was sich in der schlanken Struktur von Response APDUs niederschlägt (s. Abbildung~\ref{fig:rapdu}):
+
+\begin{itemize}
+    \itemsep0.5em
+    \item \texttt{rData}: Datenfeld
+    \item \texttt{SW1}/ \texttt{SW2} (\textit{Return-Codes}, jeweils ein Byte): Enthalten Status-Codes bzgl. des empfangenen/abgearbeiteten Befehls (bspw. \code{0x9000} als Hinweis auf eine fehlerfreie Ausführung)
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{aufgabe 1/img/rapdu.svg}
+    \caption{Struktur einer Response APDU. (Quelle: in Anlehnung an~\cite[\textbf{Abb 2.6}, 24]{ITS5})}
+    \label{fig:rapdu}
+\end{figure}
+
+
+\subsection*{``Cases``}
+
+Eine Command APDU besteht aus einem optionalen Datenteil, nämlich dem \textit{Body}.
+Darüber hinaus muss nicht jeder Command auch eine Antwort erwarten - dadurch ergeben sich die in Abbildung~\ref{fig:cases} dargestellten Fälle bzgl. der Struktur einer Command APDU:
+
+\begin{enumerate}
+    \itemsep0.5em
+    \item \textbf{Nur Header}: Übertragung von Protokollinformationen an die Karte, die nur mit einem Status antwortet.
+    \item \textbf{Nur Header und Le-Feld}: Übertragung von Protokollinformationen.
+    Karte antwortet mit Nutzlast in angegebener Länge und Statusinformationen (ggf. ohne Nutzlast, falls Fehler auftritt), bspw. wenn das Terminal die Karte sperrt.
+    \item \textbf{Header, Lc- und Daten-Feld}: Übertragung von Nutzdaten an die Karte mit der angeg. Länge. Das Terminal erwartet keine Nutzlast in der Antwort. Die Karte antwortet mit den Statusbytes. Ein möglicher Anwendungsfall wäre hier das Speichern von in der Nutzlast enthaltenen Daten.
+    \item \textbf{Header, Lc-, Le- und Daten-Feld}: Übertragung von Nutzdaten an die Karte. Das Terminal erwartet eine Antwort im Sinne einer ``vollwertigen`` Response APDU (Nutzdaten und Statusbytes). Ein möglicher Anwendungsfall ist die Erstellung einer Signatur basierend auf einem in der Karte gespeicherten privaten Schlüssels.
+\end{enumerate}
+
+
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{aufgabe 1/img/cases.svg}
+    \caption{Struktur einer Command APDU. (Quelle: in Anlehnung an~\cite[\textbf{Bild 6.41}, 431]{RF02})}
+    \label{fig:cases}
 \end{figure}
