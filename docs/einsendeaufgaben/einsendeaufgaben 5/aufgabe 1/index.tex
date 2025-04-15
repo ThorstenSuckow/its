@@ -33,3 +33,24 @@ Es erfolgt eine allgemeine Beschreibung von Chipkarten und der darin verwendeten
     \caption{Skizzenhafte Darstellung einer kontaktbehafteten Chipkarte und möglicher Komponenten. (Quelle: in Anlehnung an~\cite[\textbf{Abb. 2.1}, 9 sowie \textbf{Abb. 2.2}, 10]{ITS5})}
     \label{fig:chipkarte}
 \end{figure}
+
+
+\section{b)}
+
+\textit{Welche Komponenten werden für eine Dual‐Interface‐Chipkarte zusätzlich benötigt?}\\
+
+\noindent
+Als \textit{Dual-Interface-Chipkarten} (auch: \textit{Kombikarte},~\cite[4]{ITS5}) werden diejenigen Chipkarten bezeichnet, die sowohl \textit{kontaktlos} als auch \textit{kontaktbehaftet} mit einem Terminal kommunizieren können.\\
+Da die Energieversorgung solcher Karten über \textit{elektromagnetische} oder \textit{kapazitive Kopplung} erfolgt, sind Schreib-/Lesedistanzen zwischen Terminal und Karte begrenzt (vgl.~\cite[27]{ITS5}).
+
+\noindent
+Damit bspw. kontaktlos nach ISO 14443\footnote{
+    \url{https://en.wikipedia.org/wiki/ISO/IEC_14443}, abgerufen 15.04.2025
+} kommuniziert werden kann, benötigt die Karte als \textit{physische Voraussetzung} eine Komponente zum Senden/Empfangen von Daten, was über ein in die Karte eingelassenes \textit{RFID}\footnote{
+    \textit{Radio-Frequency Identification} (\cite[95 f.]{ITS5})
+}-Modul/ eine \textit{RFID}-Antenne realisiert wird (vgl.~\cite[27]{ITS5}).
+
+\noindent
+\textit{Logisch} benötigt der Prozessor als zusätzliche Komponente ein Interface zur Verarbeitung und Umsetzung der Protokolle, die mit der Funktechnologie einhergehen, wie es bspw. der \textit{Infineon SLE 66CLX800PE}\footnote{
+    s.a.~\url{https://www.electronicsdatasheets.com/manufacturers/infineon-technologies-ag/parts/sle-66clx800pe-ms}, abgerufen 15.04.2025
+}  anbietet (vgl.~\cite[11]{ITS5}).
