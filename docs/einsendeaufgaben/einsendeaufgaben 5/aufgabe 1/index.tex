@@ -114,7 +114,7 @@ Eine Command APDU besteht aus folgenden Feldern (s. Abbildung~\ref{fig:capdu}):
 \begin{itemize}
     \itemsep0.5em
     \item \texttt{CLA} (\textit{Class-Byte}): Kennzeichnet Anwendungen und ihren Befehlssatz (ISO-Anwendungen bspw. gekennzeichnet durch \code{0X}\footnote{
-    In dieser Schreibweise entspricht $0$ dem msb, $X$ eine beliebige Anordnung niederwertiger Bits.
+    In dieser Schreibweise entspricht $0$ dem msb, $X$ einer beliebige Anordnung von (7) Bits.
     }
     \item \texttt{INS} (\textit{Instruction-Byte}): Eigentlicher Befehl
     \item \texttt{P1}/ \texttt{P2}: \textit{Parameter-Bytes}, die \textt{INS} näher beschreiben
@@ -149,7 +149,7 @@ Da die Protokollarchitektur dem \textit{Leader-Follower-Prinzip} entspricht, geh
 \end{figure}
 
 
-\subsection*{``Cases``}
+\subsection*{Cases}
 
 Eine Command APDU besteht aus einem optionalen Datenteil, nämlich dem \textit{Body}.
 Darüber hinaus muss nicht jeder Command auch eine Antwort erwarten - dadurch ergeben sich die in Abbildung~\ref{fig:cases} dargestellten Fälle bzgl. der Struktur einer Command APDU:
