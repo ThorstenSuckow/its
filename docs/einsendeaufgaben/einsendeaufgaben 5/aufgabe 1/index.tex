@@ -156,9 +156,9 @@ Darüber hinaus muss nicht jeder Command auch eine Antwort erwarten - dadurch er
 
 \begin{enumerate}
     \itemsep0.5em
-    \item \textbf{Nur Header}: Übertragung von Protokollinformationen an die Karte, die nur mit einem Status antwortet.
+    \item \textbf{Nur Header}: Übertragung von Protokollinformationen an die Karte, die nur mit einem Status antwortet, bspw. wenn das Terminal die Karte sperrt..
     \item \textbf{Nur Header und Le-Feld}: Übertragung von Protokollinformationen.
-    Karte antwortet mit Nutzlast in angegebener Länge und Statusinformationen (ggf. ohne Nutzlast, falls Fehler auftritt), bspw. wenn das Terminal die Karte sperrt.
+    Karte antwortet mit Nutzlast in angegebener Länge, bspw. mit \textit{Status}informationen.
     \item \textbf{Header, Lc- und Daten-Feld}: Übertragung von Nutzdaten an die Karte mit der angeg. Länge. Das Terminal erwartet keine Nutzlast in der Antwort. Die Karte antwortet mit den Statusbytes. Ein möglicher Anwendungsfall wäre hier das Speichern von in der Nutzlast enthaltenen Daten.
     \item \textbf{Header, Lc-, Le- und Daten-Feld}: Übertragung von Nutzdaten an die Karte. Das Terminal erwartet eine Antwort im Sinne einer ``vollwertigen`` Response APDU (Nutzdaten und Statusbytes). Ein möglicher Anwendungsfall ist die Erstellung einer Signatur basierend auf einem in der Karte gespeicherten privaten Schlüssels.
 \end{enumerate}
