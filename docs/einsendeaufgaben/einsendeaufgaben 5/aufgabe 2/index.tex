@@ -1,0 +1,107 @@
+\chapter{Aufgabe 2}
+
+\section{a)}
+
+\textit{Welche Daten werden auf die Chipkarte aufgedruckt bzw. in der Chipkarte
+gespeichert?}\\
+
+\noindent
+Es sollten folgende Daten \textit{auf} der Chipkarte aufgedruckt werden.
+Diese diesen vor allem einer manuellen Kontrolle, können aber der elektronischen Verifikation dienen (bspw. optische Merkmale, Formate):
+
+\begin{itemize}
+    \itemsep0.5em
+    \item Daten, die den Führerschein mit dem Führerscheinträger identifizieren und so eine persönliche Zuordnung erlauben, also \textbf{Name} und ein \textbf{Foto} des Führerscheinträgers
+    \item Daten, die die verantwortliche Behörde angeben\footnote{
+        evtl. zusätzlich zu der in der Aufgabenstellung angegebenen zentralen Ausgabestelle
+    }, sowie Ausstellungsdatum und ggf. Gültigkeitsdauer
+    \item Daten die den Führerschein als amtliches Dokument ausweisen, bspw. eine \textbf{Identifikationssnummer}
+    \item Schwer zu kopierende Merkmale, wie bspw. \textbf{Lasergravuren}, \textbf{Guillochen}, \textbf{Hologramme},
+\end{itemize}
+
+\noindent
+Daten, die \textit{in} der Chipkarte gespeichert werden sollen, dienen vor allem zur elektronischen (Offline-)Verifikation, darunter:
+
+\begin{itemize}
+    \itemsep0.5em
+    \item eindeutiger, privater Schlüssel des Führerscheininhabers, der \textbf{nicht ausgelesen} werden kann
+    \item die auf dem Führerschein aufgedruckte Identifikationsnummer
+    \item alle personenbezogenen Daten, die auch auf dem Führerschein aufgetragen sind
+    \item die zentrale Ausgabestelle verwaltet MM-Codes (moduliertes maschinenfähiges Merkmal, vgl.~\cite[74]{ITS5}), die auf die Chipkarte übertragen werden.
+    Die portablen Terminals sind über spezielle Sensoren in der Lage, diese auszulesen und zusammen mit anderen Daten des Dokuments den MM-Prüfwert zu berechnen und mit einem Referenzwert (ebenfalls in der Karte gespeichert) abzugleichen (dies kommt insb. dem Schutzziel \textit{Integrität} zugute)
+\end{itemize}
+
+\section{b)}
+
+\textit{Welche Daten werden vom Terminal bzw. in der Datenbank verwaltet?}\\
+
+\noindent
+Die Ausgabe der Führerscheine erfolgt über eine zentrale Ausgabestelle.
+Dies ermöglicht es, eine einheitliche Spezifikation der Prüfprozesse von Daten zu implementieren; auf eine proprietäre Eigenentwicklung von (kryptografischen) Verfahren sollte hierbei zugunsten formal verifizierter und bewährter Verfahren verzichtet werden.
+Da es sich zudem um ein amtliches Dokument handelt, sollten Verfahren angewendet werden, die den Anforderungen der Gesetzgebung entsprechen (\textit{SigG}, \textit{SigV}\footnote{
+siehe \url{https://www.bsi.bund.de/dok/6604340}, abgerufen 16.04.2025
+}).
+Dies ist vor allem relevant im Hinblick auf die in der Karte gespeicherten \textbf{privaten Schlüssel} des Führerscheininhabers, und die in der zentralen Datenbank zum Abgleich der elektronischen Daten zur Sicherstellung von \textit{Authentizität} und \textit{Integrität} benötigt werden werden.
+
+Zusammenfassend lässt sich sagen:
+
+\begin{itemize}
+    \itemsep0.5em
+    \item Das Terminal verwaltet Verfahren und Daten zur Überprüfung von MM-Codes
+    \item Die zentrale Datenbank hält alle Daten vor, die zu einem einfachen Abgleich der Führerscheindaten sowie zum (kryptografischen) Abgleich der Führerscheindaten notwendig sind: Hierzu sind die von dem Führerschein übermittelten Daten gehasht, werden digital mit dem privaten Schlüssel des Führerscheininhabers signiert, an die zentrale Datenstelle gesendet und dort mit einem dor hinterlegten ``öffentlichen`` Schlüssel, der individuell \textit{jedem} Führerscheininhaber zugeordnet ist, abgeglichen.
+\end{itemize}
+
+
+\section{c}
+
+\textit{Wie werden die in a) und b) ermittelten Daten geschützt?}\\
+
+\noindent
+Zum Schutz der in a) und b) ermittelten Daten müssen Maßnahmen zur Umsetzung der Schutzziele \textit{Vertraulichkeit}, \textit{Integrität} und \textit{Authentizität} sowie \texbf{Verfügbarkeit} ergriffen werden.\\
+
+\noindent
+ Die Kommunikation des Terminals mit der zentralen Datenstelle erfolgt \textit{verschlüsselt} über entsprechende Protokolle (bspw. \textit{IPSec} unter Anwendung der \textit{AH}- und \textit{ESP}-Protokolle: Damit ist nicht nur Vertraulichkeit durch die Verschlüsselung von Nutzdaten garantiert, sondern auch die \textit{Intergität} und \textit{Authentizität} der Daten, wenn jedem Terminal ein hierfür notwendiges \textit{Zertifikat} zugewiesen wird
+Das Terminal selber sollte durch technische Maßnahmen möglichst manipulationssicher gefertigt sein.
+Da die Terminals mobil sind, sollte auch ein Zugriff durch Dritte durch Zutritt-/Zugangskontrollen verhindert werden.
+Eine entsprechende Abschirmung der Geräte sollte ein Abhören der elektromagnetischen Signale verhindern.\\
+
+\noindent
+Die Server, die die zentralen Daten verwalten, und deren Anwendungen mit den angeschlossenen Terminals kommunizieren, sollten den gebräuchlichen Schutzmaßnahmen einer IT-Infrastruktur mit \textbf{sehr hohem Sicherheitsniveau} unterliegen.
+Dazu gehört nicht nur der bereits angesprochene Schutz der Daten vor Manipulation, sondern es müssen ebenfalls Maßnahmen zur Umsetzung von Redundanz ergriffen werden, die Ausfallsicherheit und \textbf{Verfügbarkeit} der Daten garantieren.
+
+\section{c)}
+
+\textit{Beschreiben Sie die notwendigen Maßnahmen bei der Ausgabe eines neuen Führerscheins.}
+
+\begin{enumerate}
+    \itemsep0.5em
+    \item Antragsteller wird persönlich in der Behörde vorstellig, Abgleich von Ausweisdokumenten zur Antragstellung des Führerscheins.
+    \item Aufnahme der persönlichen Daten, Unterschrift sowie ggfl. biometrischer Daten, die für den Führerschein notwendig sind.
+    \item Übermittlung der Daten auf elektronischen Weg (unter Berücksichtigung behördlicher Schutzziele) an die zentrale Datenstelle.
+    \item Eintrag der Daten in das zentrale Register, Generierung eines \textbf{privaten und eines öffentlichen Schlüssels} für den Antragsteller.
+    \item Hinterlegung des öffentlichen Schlüssels im Datensatz des Antragstellers.
+    \item Speichern des privaten Schlüssels auf der Chipkarte, so dass dieser \textit{nicht} ausgelesen werden kann.
+    \item Physische Anfertigung der Chipkarte, Übermittlung an die zuständige Behörde.
+    \item Schriftl./elektronische Benachrichtigung des Antragstellers mit Fristsetzung zur Abholung des Dokuments.
+    \item Abgleich der (persönlichen) Daten des Antragstellers bei Abholung innerhalb der Frist, ansonsten Zerstörung des Führerscheins und Benachrichtigung an die zentrale Datenstelle, dass der angelegte Datensatz invalidiert werden kann.
+\end{enumerate}
+
+
+\section{e)}
+
+\textit{Beschreiben Sie den Ablauf der automatischen Verifikation des elektronischen
+Führerscheins.}
+
+\begin{enumerate}
+    \itemsep0.5em
+    \item \textit{Power-on-Reset} der Karte durch das Terminal.
+    \item Auslesen der Daten von der Karte und \textbf{Verschlüsselung durch das Terminal}.
+    \item Generierung eines Hashcodes der verschlüsselten Daten.
+    \item Senden des Hash an die Chipkarte.
+    \item Generierung der Signatur des Hash durch die Chipkarte, Übermittlung in Response APDU an das Terminal.
+    \item Absenden des Datenpakets (Verschlüsselte Daten und Signatur) an die zentrale Datenstelle über \textit{IPSec}.
+    \item Verifikation des Absende-Terminals bei den Gateways der zentralen Datenstelle, Weiterleitung an die zuständigen Server, sonst Datenpakete verwerfen.
+    \item Abgleich der Signatur über den öffentlichen Schlüssel des identifizierten Führerscheininhabers, bei Erfolg: Bestätigung der Identität, ansonsten Fehlermeldung unter Hinweise auf allgemeinen Fehler oder Manipulationsverdacht.
+    \item Übermittlung der Response an das Terminal.
+    \item Auswertung durch Bedienpersonal vor Ort.
+\end{enumerate}
