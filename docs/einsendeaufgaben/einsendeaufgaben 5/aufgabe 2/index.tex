@@ -2,8 +2,7 @@
 
 \section{a)}
 
-\textit{Welche Daten werden auf die Chipkarte aufgedruckt bzw. in der Chipkarte
-gespeichert?}\\
+\textit{Welche Daten werden auf die Chipkarte aufgedruckt bzw. in der Chipkarte gespeichert?}\\
 
 \noindent
 Die folgenden Daten dienen vor allem einer manuellen Kontrolle, können aber ebenso elektronische Verifikationsmaßnahmen unterstützen (bspw. optische Merkmale, Formate):
@@ -27,7 +26,7 @@ Daten, die \textit{in} der Chipkarte gespeichert werden sollen, dienen vor allem
     \item die auf dem Führerschein aufgedruckte Identifikationsnummer
     \item alle personenbezogenen Daten, die auch auf dem Führerschein aufgetragen sind
     \item die zentrale Ausgabestelle verwaltet MM-Codes (moduliertes maschinenfähiges Merkmal, vgl.~\cite[74]{ITS5}), die auf die Chipkarte übertragen werden.
-    Die portablen Terminals sind über spezielle Sensoren in der Lage, diese auszulesen und zusammen mit anderen Daten des Dokuments den MM-Prüfwert zu berechnen und mit einem Referenzwert (ebenfalls in der Karte gespeichert) abzugleichen (dies kommt insb. dem Schutzziel \textit{Integrität} zugute)
+    Die portablen Terminals sind über spezielle Sensoren in der Lage, diese auszulesen und zusammen mit anderen Daten des Dokuments den MM-Prüfwert zu berechnen und mit einem Referenzwert (ebenfalls in der Karte gespeichert) abzugleichen (dies kommt insb. dem Schutzziel \textit{Integrität} zugute).
 \end{itemize}
 
 \section{b)}
@@ -38,18 +37,17 @@ Daten, die \textit{in} der Chipkarte gespeichert werden sollen, dienen vor allem
 Die Ausgabe der Führerscheine erfolgt über eine zentrale Ausgabestelle.
 Dies ermöglicht es, eine einheitliche Spezifikation der Prüfprozesse von Daten zu implementieren; auf eine proprietäre Eigenentwicklung von (kryptografischen) Verfahren sollte hierbei zugunsten formal verifizierter und bewährter Verfahren verzichtet werden.
 Da es sich zudem um ein amtliches Dokument handelt, sollten Verfahren angewendet werden, die den Anforderungen der Gesetzgebung entsprechen (\textit{SigG}, \textit{SigV}\footnote{
-siehe \url{https://www.bsi.bund.de/dok/6604340}, abgerufen 16.04.2025
+    siehe \url{https://www.bsi.bund.de/dok/6604340}, abgerufen 16.04.2025
 }).
-Dies ist vor allem relevant im Hinblick auf die in der Karte gespeicherten \textbf{privaten Schlüssel} des Führerscheininhabers, und die in der zentralen Datenbank zum Abgleich der elektronischen Daten zur Sicherstellung von \textit{Authentizität} und \textit{Integrität} benötigt werden werden.
+Dies ist vor allem relevant im Hinblick auf die in der Karte gespeicherten \textbf{privaten Schlüssel} des Führerscheininhabers und die in der zentralen Datenbank zum Abgleich der elektronischen Daten zur Sicherstellung von \textit{Authentizität} und \textit{Integrität} benötigt werden.
 
 Zusammenfassend lässt sich sagen:
 
 \begin{itemize}
     \itemsep0.5em
-    \item Das Terminal verwaltet Verfahren und Daten zur Überprüfung von MM-Codes
-    \item Die zentrale Datenbank hält alle Daten vor, die zu einem einfachen Abgleich der Führerscheindaten sowie zum (kryptografischen) Abgleich der Führerscheindaten notwendig sind: Hierzu sind Daten des Führerscheins gehasht, deren Signatur wird mit dem auf der Karte gespeicherten privaten Schlüssel des Führerscheininhabers erstellt - ein der zentralen Datenstelle zur Verfügung stehender \textbf{öffentlicher Schlüssel}, der individuell mit jedem Führerscheininhaber assoziiert ist, dient letztendlich zum Abgleich der signierten Daten.
+    \item Das Terminal verwaltet Verfahren und Daten zur Überprüfung von MM-Codes.
+    \item Die zentrale Datenbank hält alle Daten vor, die zu einem einfachen Abgleich der Führerscheindaten sowie zum (kryptografischen) Abgleich der Führerscheindaten notwendig sind: Hierzu sind Daten des Führerscheins gehasht, deren Signatur wird mit dem auf der Karte gespeicherten privaten Schlüssel des Führerscheininhabers erstellt – ein der zentralen Datenstelle zur Verfügung stehender \textbf{öffentlicher Schlüssel}, der individuell mit jedem Führerscheininhaber assoziiert ist, dient letztendlich zum Abgleich der signierten Daten.
 \end{itemize}
-
 
 \section{c)}
 
@@ -59,9 +57,9 @@ Zusammenfassend lässt sich sagen:
 Zum Schutz der in a) und b) ermittelten Daten müssen Maßnahmen zur Umsetzung der Schutzziele \textit{Vertraulichkeit}, \textit{Integrität} und \textit{Authentizität} sowie \textbf{Verfügbarkeit} ergriffen werden.\\
 
 \noindent
- Die Kommunikation des Terminals mit der zentralen Datenstelle erfolgt \textit{verschlüsselt} über entsprechende Protokolle (bspw. \textit{IPSec} unter Anwendung der \textit{AH}- und \textit{ESP}-Protokolle: Damit ist nicht nur Vertraulichkeit durch die Verschlüsselung von Nutzdaten garantiert, sondern auch die \textit{Integrität} und \textit{Authentizität} der Daten, wenn jedem Terminal ein hierfür notwendiges \textit{Zertifikat} zugewiesen wird.
-Das Terminal selber sollte durch technische Maßnahmen möglichst manipulationssicher gefertigt sein.
-Da die Terminals mobil sind, sollte auch ein Zugriff durch Dritte durch Zutritt-/Zugangskontrollen verhindert werden.
+Die Kommunikation des Terminals mit der zentralen Datenstelle erfolgt \textit{verschlüsselt} über entsprechende Protokolle (bspw. \textit{IPSec} unter Anwendung der \textit{AH}- und \textit{ESP}-Protokolle): Damit ist nicht nur Vertraulichkeit durch die Verschlüsselung von Nutzdaten garantiert, sondern auch die \textit{Integrität} und \textit{Authentizität} der Daten, wenn jedem Terminal ein hierfür notwendiges \textit{Zertifikat} zugewiesen wird.
+Das Terminal selbst sollte durch technische Maßnahmen möglichst manipulationssicher gefertigt sein.
+Da die Terminals mobil sind, sollte auch ein Zugriff durch Dritte durch Zutritts-/Zugangskontrollen verhindert werden.
 Eine entsprechende Abschirmung der Geräte sollte ein Abhören der elektromagnetischen Signale verhindern.\\
 
 \noindent
@@ -76,8 +74,8 @@ Dazu gehört nicht nur der bereits angesprochene Schutz der Daten vor Manipulati
     \itemsep0.5em
     \item Antragsteller wird persönlich in der Behörde vorstellig, Abgleich von Ausweisdokumenten zur Antragstellung des Führerscheins.
     \item Aufnahme der persönlichen Daten, Unterschrift sowie ggf. biometrischer Daten, die für den Führerschein notwendig sind.
-    \item Übermittlung der Daten auf elektronischen Weg (unter Berücksichtigung gesetzlich vorgeschriebener Schutzziele) an die zentrale Datenstelle.
-    \item Eintrag der Daten in das zentrale Register
+    \item Übermittlung der Daten auf elektronischem Weg (unter Berücksichtigung gesetzlich vorgeschriebener Schutzziele) an die zentrale Datenstelle.
+    \item Eintrag der Daten in das zentrale Register.
     \item Generierung eines \textbf{privaten und eines öffentlichen Schlüssels} für den Antragsteller \textbf{auf} der Karte (vgl.~\cite[17 f.]{ITS5}), Personalisierung der Karte, Hashen der personalisierten Daten und Speichern der Signatur auf der Karte (``digitale Unterschrift``); der private Schlüssel verbleibt auf der Karte als ein \textit{nicht auslesbarer} Datensatz.
     \item Hinterlegung des öffentlichen Schlüssels im Datensatz des Antragstellers.
     \item Übermittlung des physischen Dokuments an die zuständige Behörde.
@@ -85,18 +83,16 @@ Dazu gehört nicht nur der bereits angesprochene Schutz der Daten vor Manipulati
     \item Abgleich der (persönlichen) Daten des Antragstellers bei Abholung innerhalb der Frist, ansonsten Zerstörung des Führerscheins und Benachrichtigung an die zentrale Datenstelle, dass der angelegte Datensatz invalidiert werden kann.
 \end{enumerate}
 
-
 \section{e)}
 
-\textit{Beschreiben Sie den Ablauf der automatischen Verifikation des elektronischen
-Führerscheins.}
+\textit{Beschreiben Sie den Ablauf der automatischen Verifikation des elektronischen Führerscheins.}
 
 \begin{enumerate}
     \itemsep0.5em
     \item \textit{Power-on-Reset} der Karte durch das Terminal.
     \item Auslesen der Daten von der Karte und \textbf{Generierung des Hashcodes} durch das Terminal.
     \item Auslesen der Signatur von der Karte, Anfrage des öffentlichen Schlüssels des Datensatzes bei der zentralen Datenstelle.
-    \item Abgleich der Signatur mittels des Hashs und des öffentlichen Schlüssels; Bei Erfolg: Bestätigung der Identität, ansonsten Fehlermeldung unter Hinweis auf allgemeinen Fehler oder Manipulationsverdacht.
+    \item Abgleich der Signatur mittels des Hashs und des öffentlichen Schlüssels; bei Erfolg: Bestätigung der Identität, ansonsten Fehlermeldung unter Hinweis auf allgemeinen Fehler oder Manipulationsverdacht.
     \item Übermittlung der Response an das Terminal.
     \item Auswertung durch Bedienpersonal vor Ort.
 \end{enumerate}
