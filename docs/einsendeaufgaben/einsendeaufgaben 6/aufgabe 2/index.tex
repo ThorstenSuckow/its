@@ -1,0 +1,221 @@
+\chapter{Aufgabe 2}
+
+\section{a)}
+
+\textit{Das PDF-Dokument enthält ein mit OpenSSL erstelltes Zertifikat in lesbarer Form.
+Woran ist erkennbar, dass es sich bei dem Inhalt der PDF-Datei um ein Eigenzertifikat handelt?}\\
+
+\noindent
+Bei einem \textbf{Eigen}- bzw. \textbf{Selbstzertifikat} handelt es sich um ein von einer Instanz selbst signiertes Publik-Key-Zertifikat (vgl.~\cite[44]{ITS6}).\\
+Bei der Klassifizierung des x.509v3-Zertifikats als Einzelzertifikat sind die Zeilen
+
+\begin{verbatim}
+    ...
+    Issuer: C=DE, ST=some-state, L=some-city, O=some-company,
+    ...
+    Subject: C=DE, ST=some-state, L=some-city, O=some-company,
+    ...
+    CA:TRUE
+    ...
+\end{verbatim}
+
+\noindent
+entscheidend.
+Bei \texttt{Issuer} handelt es sich um die ausstellende Instanz, bei \texttt{Subject} um den Zertifikat-Inhabers und \texttt{CA} (\textit{Certification Authority}) gibt an, ob es sich bei dem Zertifikatsinhaber um eine zur Signierung von Zertifikaten berechtigte Instanz handelt.\\
+
+\noindent
+Im zugehörigen RFC ist festgelegt:
+
+\blockquote[\cite{RFC5280}]{
+``Self-issued certificates are CA certificates in which
+the issuer and subject are the same entity.``
+}\\
+
+\noindent
+Da in diesem Fall \texttt{Issuer} und \texttt{Subject} den gleichen Wert besitzen, handelt es sich um ein \textbf{Selbstzertifikat}.\\
+Außerdem weist \texttt{CA: TRUE} darauf hin, dass \texttt{Subject} eine \textbf{Certification Authority} ist.
+Insgesamt handelt es sich damit bei dem Dokument um ein \textbf{Root-Zertifikat} (vgl.~\cite[25]{ITS6}).
+
+
+\section{b)}
+
+\textit{Verifizieren Sie die digitale Signatur des PDF-Dokuments und der beiden XMLDokumente mit Hilfe folgender Online-Verifikationswerkzeuge:\\
+https://www.a-trust.at/de/sicherheit/pdf-verifizieren/\\
+https://www.signaturpruefung.gv.at\\
+Interpretieren Sie Details und Inhalte der Verifikationsergebnisse. Bestimmen Sie
+insbesondere – falls möglich – welches Prüfmodell (Schale, Kette, Hybrid) bei der
+Verifikation zur Anwendung kam.}
+
+\subsection*{OpenSSLZertifikat.pdf}
+
+Eine Überprüfung mit dem Service unter \url{https://www.a-trust.at/de/sicherheit/pdf-verifizieren/} ergibt folgendes \textbf{Prüfergebnis}:
+
+\blockquote[]{
+``Das Dokument ist nicht gültig signiert. Eine formal korrekte Zertifikatskette vom Signatorzertifikat zu einem vertrauenswürdigen Wurzelzertifikat konnte konstruiert werden. Für alle Zertifikate dieser Kette fällt der Prüfzeitpunkt in das jeweilige Gültigkeitsintervall. Für zumindest ein Zertifikat konnte der Zertifikatstatus nicht festgestellt werden.``
+}
+
+\begin{itemize}
+    \itemsep0.5em
+    \item \textbf{Signatur/Siegel}
+    \item[] ``Die Überprüfung des Werts der Signatur konnte erfolgreich durchgeführt werden.``
+    \item \textbf{Zertifikat}
+    \item[] ``Eine formal korrekte Zertifikatskette vom Signatorzertifikat zu einem vertrauenswürdigen Wurzelzertifikat konnte konstruiert werden. Für alle Zertifikate dieser Kette fällt der Prüfzeitpunkt in das jeweilige Gültigkeitsintervall. Für zumindest ein Zertifikat konnte der Zertifikatstatus nicht festgestellt werden.``
+\end{itemize}
+
+\noindent
+Dies bedeutet im Einzelnen:
+
+\begin{itemize}
+    \itemsep0.5em
+    \item Die Signatur konnte verifiziert werden, womit die Authentizität und Integrität des Zertifikats sichergestellt ist.
+    \item Die Zertifikatskette konnte formal von dem Besitzer zur ausstellenden CA verfolgt werden,
+    \item jedoch konnte für mindestens ein Zertifikat der Status nicht festgestellt werden, weshalb
+    \item das Zertifikat insgesamt als \textbf{nicht gültig}/\textbf{nicht vertrauenswürdig} behandelt wird.
+\end{itemize}
+
+\noindent
+Dass das Zertifikat als nicht vertrauenswürdig eingestuft wird, liegt wahrscheinlich an dem Ablaufdatum des Zertifikats:
+
+\begin{itemize}
+    \itemsep0.5em
+    \item \textbf{Ablaufdatum}: ``2018-13-13T11:13:40Z``  \textit{(sic!)}
+    \item \textbf{Anfragedatum}: 23.04.2024
+\end{itemize}
+
+\noindent
+Zu dem Prüfmodell lässt sich feststellen, dass es sich um das Prüfmodell ``\textbf{Schale}`` handelt, da für jedes Zertifikat in der Kette der ``Prüfzeitpunkt in das jeweilige Gültigkeitsintervall`` fällt.
+
+\subsection*{vCard\_signed\_2007-04-16 OK.xml}
+
+Eine Überprüfung mit dem Service unter \url{https://www.signaturpruefung.gv.at} ergibt folgendes \textbf{Prüfergebnis}:
+
+\blockquote[]{
+    ``Das Dokument ist nicht gültig signiert. Bei der Überprüfung wurde der folgende Fehler festgestellt: Es konnte keine formal korrekte Zertifikatskette vom Signator/Siegel-Zertifikat zu einem vertrauenswürdigen Wurzelzertifikat konstruiert werden.``
+}
+
+\begin{itemize}
+    \itemsep0.5em
+    \item \textbf{Signatur/Siegel}
+    \item[] ``Die Überprüfung der Hash-Werte und des Werts der Signatur bzw. des Siegels konnte erfolgreich durchgeführt werden.``
+    \item \textbf{Zertifikat}
+    \item[] ``Es konnte keine formal korrekte Zertifikatskette vom Signator/Siegel-Zertifikat zu einem vertrauenswürdigen Wurzelzertifikat konstruiert werden.``
+\end{itemize}
+
+\noindent
+In der Zertifikatskette kann mindestens ein Zertifikat formal nicht überprüft werden, deshalb wird das Zertifikat insgesamt als \textbf{nicht vertrauenswürdig} eingestuft.\\
+
+\noindent
+Zu Klassifizierung des Prüfmodell lässt sich feststellen:
+
+\begin{itemize}
+    \itemsep0.5em
+    \item Für jedes (formal prüfbare) Zertifikat in der Kette gilt: ``Der Prüfzeitpunkt liegt innerhalb des Gültigkeitszeitraumes.``
+    \item Es konnte keine formal korrekte Zertifikats\textbf{kette} konstruiert werden.
+\end{itemize}
+
+\noindent
+Damit handelt es sich um das Prüfmodell ``\textbf{Hybrid}``.
+
+\subsection*{vCard\_signed\_2007-04-16 MODIFIED.xml}
+
+Eine Überprüfung mit dem Service unter \url{https://www.signaturpruefung.gv.at} ergibt folgendes \textbf{Prüfergebnis}:
+
+\blockquote[]{
+    ``Das Dokument ist nicht gültig signiert. Bei der Überprüfung wurden folgende Fehler festgestellt:
+    \begin{itemize}
+        \item  Bei der Überprüfung des Hash-Werts zumindest einer Referenz der Signatur bzw. des Siegels ist ein Fehler aufgetreten. Der Wert der Signatur bzw. des Siegels wurde nicht überprüft.
+        \item  Es konnte keine formal korrekte Zertifikatskette vom Signator/Siegel-Zertifikat zu einem vertrauenswürdigen Wurzelzertifikat konstruiert werden.``
+    \end{itemize}
+}
+
+\begin{itemize}
+    \itemsep0.5em
+    \item \textbf{Signatur/Siegel}
+    \item[] ``Bei der Überprüfung des Hash-Werts zumindest einer Referenz der Signatur bzw. des Siegels ist ein Fehler aufgetreten. Der Wert der Signatur bzw. des Siegels wurde nicht überprüft.``
+    \item \textbf{Zertifikat}
+    \item[] ``Es konnte keine formal korrekte Zertifikatskette vom Signator/Siegel-Zertifikat zu einem vertrauenswürdigen Wurzelzertifikat konstruiert werden.``
+\end{itemize}
+
+\noindent
+Die Signatur kann nicht erfolgreich überprüft werden.
+Damit sind \textbf{Integrität} und \textbf{Authentizität} verletzt.\\
+
+\noindent
+In der Zertifikatskette kann mindestens ein Zertifikat formal nicht überprüft werden, deshalb wird das Zertifikat insgesamt als \textbf{nicht vertrauenswürdig} eingestuft.\\
+
+\noindent
+Zu Klassifizierung des Prüfmodell lässt sich feststellen:
+
+\begin{itemize}
+    \itemsep0.5em
+    \item Für jedes (formal prüfbare) Zertifikat in der Kette gilt: ``Der Prüfzeitpunkt liegt innerhalb des Gültigkeitszeitraumes.``
+    \item Es konnte keine formal korrekte Zertifikats\textbf{kette} konstruiert werden.
+\end{itemize}
+
+\noindent
+Insgesamt kann aber aufgrund der \textbf{ungültigen Signatur} \textbf{kein Prüfmodell} zur Anwendung kommen, da die Signatur nicht formell verifiziert werden kann (vgl.~\cite[27]{ITS6}).
+
+\section{c)}
+
+\textit{Suchen Sie auf der Webseite der Alpen-Adria Universität Klagenfurt
+    (https://campus.aau.at) das Zertifikat der Universität und öffnen Sie es in Ihrem
+    Browser. Wo finden Sie die Zertifikatswiderrufsliste (CRL), welche dieses Zertifikat nach einem erfolgten Rückruf enthalten müsste? Geben Sie die URL der für dieses Zertifikat relevanten CRL an.}\\
+
+\noindent
+Eine Inspektion des Zertifikats weist für die \textbf{CRL} (\textit{Certificate Revocation List}, s.a.~\cite[35 f.]{ITS6}) folgende Angabe auf\footnote{
+\texttt{openssl crl -inform DER -in GEANT.crl -text | grep 'Serial Number' | wc -l} liefert 16.105 Einträge (Prüfdatum 23.04.2025)
+}:
+
+\begin{center}
+    \texttt{URI: http://GEANT.crl.sectigo.com/GEANTOVRSACA4.crl}
+\end{center}
+
+\noindent
+Für das \textbf{OCSP} (\textit{Online Certificate Status Protocol}) findet sich der Eintrag
+
+\begin{center}
+    \texttt{OCSP-Antwortdienst: URI: http://GEANT.ocsp.sectigo.com}
+\end{center}
+
+\noindent
+Eine Überprüfung mit einem OCSP-Online-Service wie bspw. unter \url{https://decoder.link/ocsp} ergibt die in Tabelle~\ref{tab:ocsp} gezeigten Daten. Der \textbf{Revocation Status} ``\textit{good}`` weist darauf hin, dass das Zertifikat aktuell nicht widerrufen / gesperrt ist (vgl.~\cite[37]{ITS6}).
+
+
+\begin{table}[h]
+    \setlength{\tabcolsep}{0.5em}
+    \def\arraystretch{1.5}
+    \centering
+    \begin{tabular}{|l|l|}
+        \hline
+        \textbf{OCSP-Information}     & \textbf{Wert} \\
+        \hline
+        Revocation Status             & good \\
+        \hline
+        This Update                   & Apr 21 22:18:42 2025 GMT \\
+        \hline
+        Next Update                   & Apr 28 22:18:41 2025 GMT \\
+        \hline
+        OCSP Responder URI            & \url{http://GEANT.ocsp.sectigo.com} \\
+        \hline
+    \end{tabular}
+    \caption{OCSP-Statusinformationen zur Signaturprüfung des Zertifikats von \textit{https://campus.aau.at/} (Abrufdatum: 23.04.2025)}
+    \label{tab:ocsp}
+\end{table}
+
+
+\section{d)}
+
+\textit{Eine korrekte kryptographische Verifikation des Zertifikats ist für die Akzeptanz
+des Zertifikates nicht ausreichend. Nennen Sie wenigstens drei weitere notwendige Kriterien für die Akzeptanz.}\\
+
+\noindent
+Eine kryptografische Verifikation eines Zertifikats beinhaltet formelle und mathematische Verfahren.
+Eine erfolgreiche Anwendung dieser Verfahren ist Grundlage weiterer Mechanismen, die im Rahmen einer SIS die Gültigkeit eines Zertifikats festlegen bzw. bestimmen.
+Dazu gehören unter anderem:
+
+\begin{enumerate}
+    \itemsep0.5em
+    \item Eine vertrauenswürdige \textit{Certification Authority} bzw. ein \textbf{vertrauenswürdiger Pfad bis zum Wurzelzertifikat} als ``Obrigkeitsinstanz`` und \textbf{Vertrauensanker}.
+    \item Valide Gültigkeitszeiträume für das Zertifikat, vertrauenswürdige Zeitstempeldienste für die Anwendung von \textbf{Prüfmodellen}, insbesondere bei Zertifikatsketten und nachträglicher Überprüfung der Gültigkeit von Signaturen zu einem gegebenen Zeitpunkt.
+    \item Vertrauenswürdige CRL-/OCSP-Dienste zum verlässlichen Überprüfen des \textbf{Widerrufstatus} des Zertifikats.
+\end{enumerate}
