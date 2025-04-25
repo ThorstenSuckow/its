@@ -1,0 +1,100 @@
+\chapter{Aufgabe 4}
+
+\section{Teil 1)}
+
+\textit{Welche Gründe sprechen für bzw. gegen einen solchen Dienst aus technischer,
+    organisatorischer und sozialer Sicht?}\\
+
+
+\noindent
+Durch das Onion-Routing - wie bspw. realisiert über \textit{Overlay-Netzwerke} wie Tor\footnote{
+\url{https://en.wikipedia.org/wiki/Tor_(network)}, abgerufen 25.04.2025
+}, wird Nachrichtenkommunikation zwischen den Teilnehmern anonymisiert.
+Der Ursprung der Nachricht kann bei Empfang nicht mehr eindeutig einem Absender (bis auf den unmittelbaren Vorgänger in der Kommunikationskette) zugeordnet werden (vgl.~\cite[57]{ITS6}).
+Hierzu wird eine Kette von Zwischenstationen für die Kommunikation ausgewählt, wobei der Initiator die \textbf{vollständige Kette} kennt. \\
+Mit den öffentlichen Schlüsseln der beteiligten Knoten werden die Nachrichten nacheinander schichtweise verschlüsselt.
+Der unmittelbare Nachfolger in der Nachrichtenkette kann anhand seines Schlüssels eine ``Schicht`` der Nachricht entschlüsseln, hierdurch Kenntnis über seinen Nachfolger in der Kette erlangen und die Nachricht an diesen weiterleiten.
+Sind alle Schichten entschlüsselt, ist die Nachricht am Endpunkt der Kommunikation angekommen.\\
+Indem die Knoten nur jeweils den unmittelbaren Vorgänger kennen (Empfang) und den unmittelbaren Nachfolger (Information bei Entschlüsselung), bleiben eigentlicher Absender sowie tatsächlicher Empfänger des Nachrichtenpaktes bei ausreichend langer Kette den Knoten der Kette (bis auf die Wurzel) verborgen.
+
+\noindent
+Als Einsatz im Rahmen eines Beschwerdedienstes in einem Unternehmen sind Pro und Kontra aus technischer, organisatorischer und sozialer Sicht gegeneinander abzuwägen:
+
+\begin{itemize}
+    \itemsep0.5em
+    \item \textbf{Pro}:
+    \begin{itemize}
+        \item Von einem \textbf{organisatorischen Standpunkt} aus betrachtet spricht die Möglichkeit, den Mitarbeitern das Einreichen anonymisierter Beschwerden, für den Willen den Unternehmens, sich möglicher Probleme der Mitarbeiter anzunehmen.
+        \item Das Unternehmen fährt hiermit einen vergleichsweise hohen \textbf{technischen Aufwand}, der allerdings letztendlich den Mitarbeitern Anonymität versprechen soll, wodurch sicherlich auch ein psychologischer Effekt erzielt wird, der die Mitarbeiter dazu antreibt, den ``Kummerkasten`` zu nutzen.
+        \item Unter dem Blickwinkel des \textbf{sozialen Aspekt} kann die Anonymisierung durch den bereits angesprochen psychologischen Effekt dazu führen, dass sich Mitarbeiter eher mit den vorhandenen wirtschaftlich, organisatorischen und sozialen Problemen in dem Unternehmen auseinandersetzen und den Beschwerdedienst als Chance auffassen sich aktiv für Problemlösungen einzusetzen.
+    \end{itemize}
+    \item \textbf{Kontra}:
+    \begin{itemize}
+        \item Das Unternehmen kann Gefahr laufen, die \textbf{Organisation} von Prozessen und Abläufen in dem Unternehmen eher in Frage stellen zu lassen, weil durch den fehlenden Bezug zu Personaldaten Mitarbeiter ermutigt werden, jeden Mangel anzukreiden, den sie sonst evtl. als ``notwendiges Übel`` annehmen. Hierdurch kann Mehraufwand bei der Durchleuchtung von bestimmten Prozessen anfallen, aber auch die Unzufriedenheit bei Führungspersonal
+        \item Der angesprochene \textbf{technische Aufwand} ist als vergleichsweise hoch anzusehen.
+        Eine Lösung, die (unanonymisiert) ein (digitales) schwarzes Brett oder Email-Kommunikation vorsieht, wäre leicjter umzusetzen.
+        \item Es ergeben sich aus \textbf{sozialen Geischtspunkten} mehrere Nachteile, die wahrscheinlich in einem größeren Unternehmen eher zu Mißbrauch des Dienstes führen können.
+        Durch den fehlenden Bezug zu dem Absender könnten unzufriedene Mitarbeiter zu Diffamierung und Denunziation anderer Mitarbeiter verleitet werden.
+        Es könnte außerdem dazu kommen, dass über Missstände berichtet wird, die eigentlich nicht vorhanden sind.
+    \end{itemize}
+\end{itemize}
+
+\noindent
+Insgesamt kann eine anonymisierte Umsetzung einer Beschwerdestelle sicherlich einen Beitrag zur Öffnung und Förderung der Unternehmenskultur leisten.
+Es muss allerdings abgewogen werden zwischen dem Nutzen und dem Mißbrauch des Systems - nicht nur von Seiten der Nutzer, sondern auch von den Betreibern, denen es ja technisch möglich ist, die beteiligten (ersten) Knoten so zu manipulieren, dass sie Beschwerden und Absender im Klartext erhalten.\\
+Außerdem muss bedacht werden, dass durch die Anonymisierung und der fehlende Bezug zu den Beschwerdestellern eine sinnvolle Diskussion, die von der entgegengesetzten Richtung angestoßen werden könnte, nicht möglich ist.
+
+
+\section{b)}
+\textit{Diskutieren Sie ein geeignetes Schlüsselmanagement für einen Anonymisierungsdienst. Wie und in welcher Form ist hierfür eine Public-Key-Infrastruktur hilfreich?}\\
+
+\noindent
+Als geeignetes Schlüsselmanagement sollte eine Dritte Instanz in Form einer Certification Authority vorhanden sein, wobei diese durchaus von den Kommunikationsteilnehmern beliebig gewählt werden darf und nicht von der Unternehmensseite vorgegeben sein sollte.
+Gerade im Hinblick der Vertraulichkeit und gegebenenfalls der Sensibilität der Beschwerden sollte das Unternehmen nicht als selbst-signierende CA auftreten.\\
+
+\noindent
+Eine PKI (\textit{Public-Key-Infrastructure}) ist dahingehend hilfreich, als dass sie den Verfassern der Nachrichten ermöglicht, unkompliziert an die öffentlichen Schlüssel der beteiligten Knoten in der Nachrichtenkette zu kommen.
+Dadurch kann auch ausgeschlossen werden, dass das Unternehmen die beteiligten Knoten bei der ``Verschichtung`` der Nachrichten vorgibt, was eine Möglichkeit zur Manipulation des Prozesses durch die Aufhebung der Vertraulichkeit ermöglichen würde.\\
+Eine freie Wahl der Knoten bei der Nutzung des Systems erhöht das Vertrauen in den Beschwerdedienst und damit auch das Vertrauen in das Unternehmen.
+
+
+\section{c)}
+
+\textit{Um Missbrauch vorzubeugen ist es erforderlich, die Identität des Absenders einer
+anonymen Nachricht im Bedarfsfall aufdecken zu können. Zu diesem Zweck soll
+die Identität des Absenders in verschlüsselter Form der Nachricht beigefügt
+werden. Die Verschlüsselung soll hierbei durch ein Personal Trust Center (Chipkarte im Mitarbeiterausweis) erfolgen, um einen korrekten Ablauf zu garantieren.
+Welche zusätzlichen Schlüssel sind hierfür erforderlich? Welche organisatorischen
+Maßnahmen sind darüber hinaus erforderlich? Nennen Sie wenigstens zwei
+Beispiele, wo eine Aufhebung der Anonymität sinnvoll ist.}\\
+
+
+\noindent
+Als zusätzliche Schlüssel sind erforderlich:
+
+\begin{itemize}
+    \itemsep0.5em
+    \item Privater Schlüssel des Karteninhabers, der auf der Chipkarte gespeichert wird.
+    \item Aus einer Passphrase abgeleiteter Schlüssel $k$ zur Verschlüsselung des privaten Schlüssels des Mitarbeiters (vgl.~\cite[14]{ITS6})\footnote{
+    Speicherung der Passphrase, falls $k$ weiterhin benötigt wird (vgl.~\cite[15]{ITS6}).
+    }.
+    \item Öffentlicher Schlüssel des Karteninhabers, hinterlegt in einem Schlüsselverzeichnis und zertifiziert über eine CA.
+\end{itemize}
+
+\noindent
+Zur Aufhebung der Anonymität muss eine übergeordnete Instanz die verwendeten Schlüssel mit Personen in Bezug bringen können.
+Hierzu bietet es sich an, den öffentlichen Schlüssel dieser Instanz zur Verschlüsselung der Identität des Mitarbeiters zu nutzen.
+Die verschlüsselte Identität wird auf der Karte gespeichert, bei Nachrichtenübermittlung als Teil der Signatur angehangen und kann bei Bedarf durch die übergeordnete Instanz (mit dessen privaten Schlüssel) entschlüsselt und einer Person eindeutig zugeordnet werden.\\
+
+\noindent
+Als zusätzliche organisatorische Maßnahmen ergeben sich das Management der Chipkarten über die \textbf{Personalabteilung}: Bestellung der Chipkarten bei Eintritt, Entsporgung bzw. Invalidierung der Chipkarten bei Ausscheiden eines Mitarbeiters (vgl.~\cite[18]{ITS6}). hierzu gehört auch die Benachrichtigung an die CA, wenn Zertifikate für die öffentlichen Schlüssel des Mitarbeiters ihre Gültigkeit verlieren sollen.\\
+Darüber hinaus muss - für die angesprochene Aufhebung der Anonymität - ein rechtsverbindlicher Rahmen und ein auditierbarer Prozess für ebendiese eingeführt werden, um Verstöße der Unternehmensleitung/ Personal zu vermeiden.\\
+
+\noindent
+Eine Aufhebung der Anonymität könnte angebracht sein bei
+
+\begin{itemize}
+    \itemsep0.5em
+    \item Begründeter Verdacht auf persönlichkeits-/ehrverletzende Äußerungen gegenüber Personal des Unternehmens.
+    \item Drohungen gegenüber Personal des Unternehmens oder das Unternehmen als Instanz, welche als Ankündigung einer Straftat verstanden werden können.
+\end{itemize}
