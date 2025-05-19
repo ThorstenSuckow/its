@@ -7,48 +7,47 @@
     \label{fig:xkcd221}
 \end{figure}
 
-
 \section{a)}
 
 \textit{Wir betrachten den Pseudozufallsgenerator $x_{i+1} = (a \cdot x_i + b) \ \text{MOD}\ m$ mit Modul
-$m = 24$. Für welche Parameter $a,b \in \{1, \ldots, 23\}$ wird die maximale Periodendauer
-erreicht?}\\
+    $m = 24$. Für welche Parameter $a,b \in \{1, \ldots, 23\}$ wird die maximale Periodendauer
+    erreicht?}\\
 
 \noindent
 Wir suchen $d$, für das
 
 \begin{equation}\notag
-    f^{d+1}(x) = f^i(x), \forall i \geq 0 \qquad{\text{(keine Vorperiode vorhanden)}}
+f^{d+1}(x) = f^i(x), \forall i \geq 0 \qquad{\text{(keine Vorperiode vorhanden)}}
 \end{equation}
 
 \noindent
 ist.\\
 
 \noindent
-\textit{Horster und Schartner} weisen in~\cite[83]{ITS3} auf 3 Bedingungen hin, unter deren EInhaltung eine maximale Periodenlänge $d=m$ garantiert werden kann.
-Diese wenden wir im Folgenden an, wobei wir zunächst die Primfaktoren von $m = 24$ bestimmen, die sich trivialerweise zu $\{2, 3\}$ ergeben ($2^3 \cdot 3 = 24$)
+\textit{Horster und Schartner} weisen in~\cite[83]{ITS3} auf 3 Bedingungen hin, unter deren Einhaltung eine maximale Periodenlänge $d = m$ garantiert werden kann.
+Diese wenden wir im Folgenden an, wobei wir zunächst die Primfaktoren von $m = 24$ bestimmen, die sich trivialerweise zu $\{2, 3\}$ ergeben ($2^3 \cdot 3 = 24$).
 
 \begin{enumerate}
     \itemsep0.5em
     \item Die Werte $m$ und $b$ müssen den größten gemeinsamen Teiler 1 besitzen.
-    \item Alle Primfaktoren von $m$ müssen auch $a-1$ teilen.
-    \item Ist $m$ durch 4 teilbar, so muss dies auch für $a-1$ gelten.
+    \item Alle Primfaktoren von $m$ müssen auch $a - 1$ teilen.
+    \item Ist $m$ durch 4 teilbar, so muss dies auch für $a - 1$ gelten.
 \end{enumerate}
 
 \noindent
-Wir ermitteln zunächst $a$ unter Berücksichtigung von Bedingung 2. und 3.
-Da $4|24$ erfüllt ist, suchen wir ein $a-1$, für das $4|a-1$ (Bedingung 3.) sowie  $2|a-1$ und $3|a-1$ gilt (Bedingung 2.).\\
+Wir ermitteln zunächst $a$ unter Berücksichtigung von Bedingung 2 und 3.
+Da $4 \mid 24$ erfüllt ist, suchen wir ein $a - 1$, für das $4 \mid (a - 1)$ (Bedingung 3) sowie $2 \mid (a - 1)$ und $3 \mid (a - 1)$ gilt (Bedingung 2).\\
 Wir setzen demnach
 
 \begin{equation}\notag
-    a=13
+a = 13
 \end{equation}
 
 \noindent
 Dies ist gleichzeitig der einzige Wert, den wir unter o.a. Bedingungen wählen können.
 
 \noindent
-Wir suchen nun nach einem $b$, für das $gcd(b, 24) = 1$ gilt.
+Wir suchen nun nach einem $b$, für das $\gcd(b, 24) = 1$ gilt.
 Wir können demnach einen Wert aus $\{1, 5, 7, 11, 13, 17, 19, 21, 23\}$ für $b$ auswählen.
 
 \noindent
@@ -69,33 +68,33 @@ $x_{i+1} = (13 \cdot x_i + 7) \ \text{MOD}\ 24$
 und erhalten mit $x_0 = 0$:
 
 \begin{equation}\notag
-    \begin{alignat}{3}
-        x_0 &= 0 \\
-        x_1 &= (13 \cdot 0 + 5) \ \text{MOD}\ 24 && = 5 \\
-        x_2 &= (13 \cdot 5 + 5) \ \text{MOD}\ 24 && = 22 \\
-        x_3 &= (13 \cdot 22 + 5) \ \text{MOD}\ 24 && = 3 \\
-        x_4 &= (13 \cdot 3 + 5) \ \text{MOD}\ 24 && = 20 \\
-        x_5 &= (13 \cdot 20 + 5) \ \text{MOD}\ 24 && = 1 \\
-        x_6 &= (13 \cdot 1 + 5) \ \text{MOD}\ 24 && = 18 \\
-        x_7 &= (13 \cdot 18 + 5) \ \text{MOD}\ 24 && = 23 \\
-        x_8 &= (13 \cdot 23 + 5) \ \text{MOD}\ 24 && = 16 \\
-        x_9 &= (13 \cdot 16 + 5) \ \text{MOD}\ 24 && = 21 \\
-        x_{10} &= (13 \cdot 21 + 5) \ \text{MOD}\ 24 && = 14 \\
-        x_{11} &= (13 \cdot 14 + 5) \ \text{MOD}\ 24 && = 19 \\
-        x_{12} &= (13 \cdot 19 + 5) \ \text{MOD}\ 24 && = 12 \\
-        x_{13} &= (13 \cdot 12 + 5) \ \text{MOD}\ 24 && = 17 \\
-        x_{14} &= (13 \cdot 17 + 5) \ \text{MOD}\ 24 &&= 10\\
-        x_{15} &= (13 \cdot 10 + 5) \ \text{MOD}\ 24 &&= 15\\
-        x_{16} &= (13 \cdot 15 + 5) \ \text{MOD}\ 24 &&=  8\\
-        x_{17} &= (13 \cdot  8 + 5) \ \text{MOD}\ 24 &&= 13\\
-        x_{18} &= (13 \cdot 13 + 5) \ \text{MOD}\ 24 &&=  6\\
-        x_{19} &= (13 \cdot  6 + 5) \ \text{MOD}\ 24 &&= 11\\
-        x_{20} &= (13 \cdot 11 + 5) \ \text{MOD}\ 24 &&=  4\\
-        x_{21} &= (13 \cdot  4 + 5) \ \text{MOD}\ 24 &&=  9\\
-        x_{22} &= (13 \cdot  9 + 5) \ \text{MOD}\ 24 &&=  2\\
-        x_{23} &= (13 \cdot  2 + 5) \ \text{MOD}\ 24 &&=  7\\
-        x_{24} &= (13 \cdot  7 + 5) \ \text{MOD}\ 24 &&=  0
-    \end{alignat}
+\begin{alignat}{3}
+    x_0 &= 0 \\
+    x_1 &= (13 \cdot 0 + 5) \ \text{MOD}\ 24 && = 5 \\
+    x_2 &= (13 \cdot 5 + 5) \ \text{MOD}\ 24 && = 22 \\
+    x_3 &= (13 \cdot 22 + 5) \ \text{MOD}\ 24 && = 3 \\
+    x_4 &= (13 \cdot 3 + 5) \ \text{MOD}\ 24 && = 20 \\
+    x_5 &= (13 \cdot 20 + 5) \ \text{MOD}\ 24 && = 1 \\
+    x_6 &= (13 \cdot 1 + 5) \ \text{MOD}\ 24 && = 18 \\
+    x_7 &= (13 \cdot 18 + 5) \ \text{MOD}\ 24 && = 23 \\
+    x_8 &= (13 \cdot 23 + 5) \ \text{MOD}\ 24 && = 16 \\
+    x_9 &= (13 \cdot 16 + 5) \ \text{MOD}\ 24 && = 21 \\
+    x_{10} &= (13 \cdot 21 + 5) \ \text{MOD}\ 24 && = 14 \\
+    x_{11} &= (13 \cdot 14 + 5) \ \text{MOD}\ 24 && = 19 \\
+    x_{12} &= (13 \cdot 19 + 5) \ \text{MOD}\ 24 && = 12 \\
+    x_{13} &= (13 \cdot 12 + 5) \ \text{MOD}\ 24 && = 17 \\
+    x_{14} &= (13 \cdot 17 + 5) \ \text{MOD}\ 24 &&= 10\\
+    x_{15} &= (13 \cdot 10 + 5) \ \text{MOD}\ 24 &&= 15\\
+    x_{16} &= (13 \cdot 15 + 5) \ \text{MOD}\ 24 &&=  8\\
+    x_{17} &= (13 \cdot  8 + 5) \ \text{MOD}\ 24 &&= 13\\
+    x_{18} &= (13 \cdot 13 + 5) \ \text{MOD}\ 24 &&=  6\\
+    x_{19} &= (13 \cdot  6 + 5) \ \text{MOD}\ 24 &&= 11\\
+    x_{20} &= (13 \cdot 11 + 5) \ \text{MOD}\ 24 &&=  4\\
+    x_{21} &= (13 \cdot  4 + 5) \ \text{MOD}\ 24 &&=  9\\
+    x_{22} &= (13 \cdot  9 + 5) \ \text{MOD}\ 24 &&=  2\\
+    x_{23} &= (13 \cdot  2 + 5) \ \text{MOD}\ 24 &&=  7\\
+    x_{24} &= (13 \cdot  7 + 5) \ \text{MOD}\ 24 &&=  0
+\end{alignat}
 \end{equation}
 
 \noindent
@@ -106,7 +105,7 @@ Die Periodenlänge dieser Pseudozufallsfolge beträgt 24.
 
 \textit{Gegeben sei der Öffentliche Schlüssel eines RSA‐Systems $(e, n) = (3, 2773)$. Bestimmen Sie die ersten 10 Bits,
     die von einem RSA‐basierten Pseudozufallsgenerator
-ausgegeben werden, wenn der Startwert $s = 5$ gewählt wird.}\\
+    ausgegeben werden, wenn der Startwert $s = 5$ gewählt wird.}\\
 
 
 \noindent
@@ -132,7 +131,7 @@ Wir berechnen wie folgt (vgl.~\cite[88]{ITS3}):
 Damit ergeben sich die ersten 10 Bits zu
 
 \begin{equation}\notag
-    1100\ 1010\  11
+1100\ 1010\  11
 \end{equation}
 
 
@@ -145,7 +144,7 @@ Register zunächst mit einer 1 belegt werden?}
 Für die Funktion des  rückgekoppelten Schieberegisters ergibt sich
 
 \begin{equation}\notag
-    f(z_5, z_4, z_3, z_2, z_1) = z_5 \oplus (z_4 \oplus (z_2 \oplus z_1))
+f(z_5, z_4, z_3, z_2, z_1) = z_5 \oplus (z_4 \oplus (z_2 \oplus z_1))
 \end{equation}
 
 
